@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Dalamud.NET.Sdk/15.0.0">
     <PropertyGroup>
-        <Version>1.0.0.51</Version>
+        <Version>1.0.0.52</Version>
         <AssemblyName>AetherBagsCN</AssemblyName>
         <RootNamespace>AetherBags</RootNamespace>
     </PropertyGroup>
 
     <PropertyGroup>
         <Author>Zeffuro, Pie Lover; 汉化: llluqu</Author>
-        <Name>AetherBags 汉化版</Name>
+        <Name>AetherBags CN</Name>
         <InternalName>AetherBagsCN</InternalName>
         <Punchline>再也不用对着背包发愁！</Punchline>
         <Description>用游戏原生 UI 按自定义分类整理并显示背包物品，支持筛选、排序、固定分类与货币显示。</Description>
