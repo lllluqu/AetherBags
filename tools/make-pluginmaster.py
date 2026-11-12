@@ -1,8 +1,8 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Generate a Dalamud pluginmaster.json entry for the localized build.
 
 Usage:
-    python tools/make-pluginmaster.py --output ../AetherBags-Repo/pluginmaster.json
+    python tools/make-pluginmaster.py --output ../MyDalamudRepo/pluginmaster.json
 
 The version is read from AetherBags/AetherBags.csproj, so it always matches the
 assembly that DalamudPackager just built.
