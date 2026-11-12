@@ -1,4 +1,4 @@
-# 上游更新时如何维护汉化版
+﻿# 上游更新时如何维护汉化版
 
 本仓库是 [Zeffuro/AetherBags](https://github.com/Zeffuro/AetherBags) 的简体中文汉化分支。
 上游发版后，按下面的流程把新代码合进来、补翻译、再发布。
@@ -128,13 +128,13 @@ git push origin v1.0.0.61
 
 1. 把 `latest.zip` 重命名为 `AetherBagsCN-<版本>.zip`（带版本号，避免 GitHub 下载缓存命中旧文件）。
 2. 在 GitHub 创建 `v<版本>` 标签与 Release，上传这个 zip。
-3. 更新插件源仓库的 `pluginmaster.json`：
+3. 更新聚合仓库 `MyDalamudRepo` 的 `pluginmaster.json`：
 
 ```powershell
-python tools/make-pluginmaster.py --output ../AetherBags-Repo/pluginmaster.json
+python tools/make-pluginmaster.py --output ../MyDalamudRepo/pluginmaster.json
 ```
 
-它会从 `csproj` 读版本号，生成正确的 `AssemblyVersion` 与下载链接，然后提交到 `AetherBags-Repo` 即可。
+它会从 `csproj` 读版本号，生成正确的 `AssemblyVersion` 与下载链接，然后提交到 `MyDalamudRepo` 即可。
 
 ## 3. 常见问题
 
