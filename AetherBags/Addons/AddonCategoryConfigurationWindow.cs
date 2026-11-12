@@ -81,6 +81,8 @@ public class AddonCategoryConfigurationWindow : NativeAddon
         };
 
         _configNode.AttachNode(this);
+
+        KtkLocalizer.Apply(this);
     }
 
     private static List<CategoryWrapper> CreateCategoryWrappers()

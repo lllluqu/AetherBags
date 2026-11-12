@@ -114,6 +114,24 @@ public static class Loc
         return english;
     }
 
+    /// <summary>
+    /// Looks up a translation without recording a missing-key diagnostic.
+    /// Used by the KamiToolKit tree walker, which sees many non-localizable strings.
+    /// </summary>
+    public static bool TryGet(string english, out string translated)
+    {
+        EnsureInitialized();
+
+        if (IsChinese && _zh.TryGetValue(english, out var value))
+        {
+            translated = value;
+            return true;
+        }
+
+        translated = english;
+        return false;
+    }
+
     /// <summary>Translates a composite format string and applies <paramref name="args"/>.</summary>
     public static string T(string english, params object?[] args)
     {

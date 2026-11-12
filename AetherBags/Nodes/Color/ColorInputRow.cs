@@ -1,4 +1,5 @@
-using System;
+﻿using System;
+using AetherBags.Addons;
 using System.Numerics;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using KamiToolKit.Nodes;
@@ -66,7 +67,7 @@ public class ColorInputRow : HorizontalListNode
     private void InitializeColorPicker() {
         if (_colorPickerAddon is not null) return;
 
-        _colorPickerAddon = new ColorPickerAddon {
+        _colorPickerAddon = new LocalizedColorPickerAddon {
             InternalName = "ColorPicker_AetherBags",
             Title = Loc.T("Pick a color"),
         };

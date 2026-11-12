@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using AetherBags.Currency;
 using AetherBags.Nodes.Configuration.Category;
@@ -8,7 +8,7 @@ using Lumina.Excel.Sheets;
 
 namespace AetherBags.Addons;
 
-public class AddonCurrencyPicker : BaseSearchAddon<Item, ItemListItemWithAddNode> {
+public class AddonCurrencyPicker : LocalizedSearchAddon<Item, ItemListItemWithAddNode> {
     public AddonCurrencyPicker() {
         var allItems = Services.DataManager.GetExcelSheet<Item>();
         var obsoleteTomes = Services.DataManager.GetExcelSheet<TomestonesItem>()

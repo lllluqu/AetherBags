@@ -1,7 +1,7 @@
-using AetherBags.Nodes.Configuration.Category;
+﻿using AetherBags.Nodes.Configuration.Category;
 using KamiToolKit.Premade.Addon.Search;
 
 namespace AetherBags.Addons;
 
-public class AddonItemPicker : ItemSearchAddonBase<ItemListItemWithAddNode> {
+public class AddonItemPicker : LocalizedItemSearchAddon<ItemListItemWithAddNode> {
 }

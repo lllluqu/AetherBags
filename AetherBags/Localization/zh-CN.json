@@ -366,5 +366,12 @@
   "Rare (Blue)": "稀有（蓝色）",
   "Relic (Purple)": "遗物（紫色）",
   "Aetherial (Pink)": "以太（粉色）",
-  "⊕ Overrides: {0}": "⊕ 覆盖：{0}"
+  "⊕ Overrides: {0}": "⊕ 覆盖：{0}",
+  "Default": "默认",
+  "Edit": "编辑",
+  "Color Picker": "颜色选择器",
+  "Please select an option on the left": "请在左侧选择一个选项",
+  "None Selected": "未选择",
+  "Label Not Set": "未设置标签",
+  "Reverse Sort Direction": "反转排序方向"
 }
