@@ -1,0 +1,60 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  release:
+    name: Build Release
+    runs-on: windows-2022
+
+    env:
+      PLUGIN_NAME: AetherBags
+      DALAMUD_VERSION_URL: "https://goatcorp.github.io/dalamud-distrib/latest.zip"
+
+    steps:
+      - name: Checkout and Initialise
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.x.x'
+
+      - name: Cache Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Download and extract Dalamud
+        run: |
+          New-Item -ItemType Directory -Force -Path "$env:AppData\XIVLauncher\addon\Hooks\dev" | Out-Null
+          Invoke-WebRequest -Uri "${{ env.DALAMUD_VERSION_URL }}" -OutFile "dalamud.zip"
+          Expand-Archive -Path "dalamud.zip" -DestinationPath "$env:AppData\XIVLauncher\addon\Hooks\dev" -Force
+
+      - name: Build Release
+        run: |
+          dotnet restore
+          dotnet build --no-restore --configuration Release
+
+      - name: Package
+        shell: pwsh
+        run: |
+          $zip = Get-ChildItem -Path "$env:PLUGIN_NAME\bin\x64\Release" -Recurse -Filter "latest.zip" | Select-Object -First 1
+          if (-not $zip) { throw "latest.zip not found" }
+          Copy-Item $zip.FullName "AetherBagsCN.zip"
+          Get-FileHash "AetherBagsCN.zip" -Algorithm SHA256 | Format-List
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: AetherBagsCN.zip
+          generate_release_notes: true

@@ -1,4 +1,4 @@
-using System.Numerics;
+﻿using System.Numerics;
 using AetherBags.Addons;
 using AetherBags.Commands;
 using AetherBags.Helpers;
@@ -30,6 +30,8 @@ public class Plugin : IDalamudPlugin
         BackupHelper.DoConfigBackup(pluginInterface);
 
         KamiToolKitLibrary.Initialize(pluginInterface);
+        KamiToolKitLibrary.SetResourceManager(LocResourceManager.Instance);
+        KamiToolKitLibrary.SetCurrentCulture(global::System.Globalization.CultureInfo.GetCultureInfo("zh-CN"));
 
         System.IPC = new IPCService();
         System.IPC.RefreshExternalSources();
