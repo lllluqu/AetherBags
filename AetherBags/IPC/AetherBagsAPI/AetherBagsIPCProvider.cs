@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Dalamud.Plugin.Ipc;
 
@@ -6,7 +6,7 @@ namespace AetherBags.IPC.AetherBagsAPI;
 
 public class AetherBagsIPCProvider : IDisposable
 {
-    private const string IpcPrefix = "AetherBags.";
+    private const string IpcPrefix = "AetherBagsCN.";
 
     private readonly AetherBagsAPIImpl _api;
 

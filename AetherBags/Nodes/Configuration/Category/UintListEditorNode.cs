@@ -73,7 +73,7 @@ public sealed class UintListEditorNode : VerticalListNode
             Size = new Vector2(28),
             Icon = ButtonIcon.MagnifyingGlass,
             OnClick = () => OnSearchButtonClicked?.Invoke(),
-            TextTooltip = "Search the game database..."
+            TextTooltip = Loc.T("Search the game database...")
         };
         addRow.AddNode(searchButton);
 
@@ -89,7 +89,7 @@ public sealed class UintListEditorNode : VerticalListNode
         var addButton = new TextButtonNode
         {
             Size = new Vector2(60, RowHeight),
-            String = "Add",
+            String = Loc.T("Add"),
             OnClick = AddCurrentValue,
         };
         addRow.AddNode(addButton);
@@ -194,8 +194,8 @@ public sealed class UintListItemNode : HorizontalListNode
         ItemSpacing = 4.0f;
 
         string idDisplay = value switch {
-            0xFFFF_FFFE => "[Weekly]",
-            0xFFFF_FFFD => "[Tome]",
+            0xFFFF_FFFE => Loc.T("[Weekly]"),
+            0xFFFF_FFFD => Loc.T("[Tome]"),
             _ => value.ToString()
         };
 
@@ -216,7 +216,7 @@ public sealed class UintListItemNode : HorizontalListNode
         {
             Size = new Vector2(28, 28),
             Icon = ButtonIcon.UpArrow,
-            TextTooltip = "Move up",
+            TextTooltip = Loc.T("Move up"),
             IsEnabled = !isFirst,
             OnClick = () => OnMoveUp?.Invoke(),
         });
@@ -225,7 +225,7 @@ public sealed class UintListItemNode : HorizontalListNode
         {
             Size = new Vector2(28, 28),
             Icon = ButtonIcon.ArrowDown,
-            TextTooltip = "Move down",
+            TextTooltip = Loc.T("Move down"),
             IsEnabled = !isLast,
             OnClick = () => OnMoveDown?.Invoke(),
         });
@@ -234,7 +234,7 @@ public sealed class UintListItemNode : HorizontalListNode
         {
             Size = new Vector2(28, 28),
             Icon = ButtonIcon.Cross,
-            TextTooltip = "Remove",
+            TextTooltip = Loc.T("Remove"),
             OnClick = () => OnRemove?.Invoke(),
         });
     }

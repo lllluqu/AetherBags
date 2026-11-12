@@ -27,7 +27,7 @@ internal sealed class FunctionalConfigurationNode : TabbedVerticalListNode
         var titleNode = new CategoryTextNode
         {
             Height = 18,
-            String = "Functional Configuration",
+            String = Loc.T("Functional Configuration"),
         };
         AddNode(titleNode);
 
@@ -37,7 +37,7 @@ internal sealed class FunctionalConfigurationNode : TabbedVerticalListNode
         {
             Size = Size with { Y = 18 },
             IsVisible = true,
-            String = "Auto-open with game inventory",
+            String = Loc.T("Auto-open with game inventory"),
             IsChecked = config.OpenWithGameInventory,
             OnClick = isChecked =>
             {
@@ -52,7 +52,7 @@ internal sealed class FunctionalConfigurationNode : TabbedVerticalListNode
         {
             Size = Size with { Y = 18 },
             IsVisible = true,
-            String = "Hide default inventory bags",
+            String = Loc.T("Hide default inventory bags"),
             IsEnabled = config.OpenWithGameInventory,
             IsChecked = config.HideGameInventory,
             OnClick = isChecked =>
@@ -67,7 +67,7 @@ internal sealed class FunctionalConfigurationNode : TabbedVerticalListNode
         {
             Size = Size with { Y = 18 },
             IsVisible = true,
-            String = "Auto-open Saddlebags with game Saddlebags",
+            String = Loc.T("Auto-open Saddlebags with game Saddlebags"),
             IsChecked = config.OpenSaddleBagsWithGameInventory,
             OnClick = isChecked =>
             {
@@ -82,7 +82,7 @@ internal sealed class FunctionalConfigurationNode : TabbedVerticalListNode
         {
             Size = Size with { Y = 18 },
             IsVisible = true,
-            String = "Hide default Saddlebags",
+            String = Loc.T("Hide default Saddlebags"),
             IsEnabled = config.OpenSaddleBagsWithGameInventory,
             IsChecked = config.HideGameSaddleBags,
             OnClick = isChecked =>
@@ -97,7 +97,7 @@ internal sealed class FunctionalConfigurationNode : TabbedVerticalListNode
         {
             Size = Size with { Y = 18 },
             IsVisible = true,
-            String = "Auto-open Retainer bags with game Retainer bags",
+            String = Loc.T("Auto-open Retainer bags with game Retainer bags"),
             IsChecked = config.OpenRetainerWithGameInventory,
             OnClick = isChecked =>
             {
@@ -112,7 +112,7 @@ internal sealed class FunctionalConfigurationNode : TabbedVerticalListNode
         {
             Size = Size with { Y = 18 },
             IsVisible = true,
-            String = "Hide default Retainer bags",
+            String = Loc.T("Hide default Retainer bags"),
             IsEnabled = config.OpenRetainerWithGameInventory,
             IsChecked = config.HideGameRetainer,
             OnClick = isChecked =>
@@ -127,7 +127,7 @@ internal sealed class FunctionalConfigurationNode : TabbedVerticalListNode
         {
             Size = Size with { Y = 18 },
             IsVisible = true,
-            String = "Allow item linking with Shift+Click",
+            String = Loc.T("Allow item linking with Shift+Click"),
             IsChecked = config.LinkItemEnabled,
             OnClick = isChecked =>
             {
@@ -140,7 +140,7 @@ internal sealed class FunctionalConfigurationNode : TabbedVerticalListNode
         {
             Size = Size with { Y = 18 },
             IsVisible = true,
-            String = "Enable Animation",
+            String = Loc.T("Enable Animation"),
             IsChecked = config.AnimationEnabled,
             OnClick = isChecked =>
             {
@@ -154,8 +154,8 @@ internal sealed class FunctionalConfigurationNode : TabbedVerticalListNode
         {
             Size = Size with { Y = 18 },
             IsVisible = true,
-            String = "Enable frame batching",
-            TextTooltip = "Populates inventory items over several frames while opening windows. Disable only if you prefer immediate population and can tolerate a larger one-frame hitch.",
+            String = Loc.T("Enable frame batching"),
+            TextTooltip = Loc.T("Populates inventory items over several frames while opening windows. Disable only if you prefer immediate population and can tolerate a larger one-frame hitch."),
             IsChecked = config.FrameBatchingEnabled,
             OnClick = isChecked =>
             {
@@ -174,7 +174,7 @@ internal sealed class FunctionalConfigurationNode : TabbedVerticalListNode
         var searchModeDropDown = new LabeledEnumDropdownNode<SearchMode>
         {
             Size = new Vector2(500, 20),
-            LabelText = "Search Mode",
+            LabelText = Loc.T("Search Mode"),
             LabelTextFlags = TextFlags.AutoAdjustNodeSize,
             Options = Enum.GetValues<SearchMode>().ToList(),
             SelectedOption = config.SearchMode,
@@ -190,7 +190,7 @@ internal sealed class FunctionalConfigurationNode : TabbedVerticalListNode
         {
             Size = new Vector2(500, 20),
             IsEnabled = true,
-            LabelText = "Stack Mode",
+            LabelText = Loc.T("Stack Mode"),
             LabelTextFlags = TextFlags.AutoAdjustNodeSize,
             Options = Enum.GetValues<InventoryStackMode>().ToList(),
             SelectedOption = config.StackMode,
@@ -209,8 +209,8 @@ internal sealed class FunctionalConfigurationNode : TabbedVerticalListNode
             Size = Size with { Y = 18 },
             IsVisible = true,
             IsEnabled = config.StackMode == InventoryStackMode.AggregateByItemId,
-            String = "Combine unstackable items into a single stack",
-            TextTooltip = "Also merge duplicates of items that don't normally stack (like equipment).\nLeave off to keep each copy in its own slot so distinct materia, dyes, and spiritbond stay visible.",
+            String = Loc.T("Combine unstackable items into a single stack"),
+            TextTooltip = Loc.T("Also merge duplicates of items that don't normally stack (like equipment).\nLeave off to keep each copy in its own slot so distinct materia, dyes, and spiritbond stay visible."),
             IsChecked = config.AggregateUnstackableItems,
             OnClick = isChecked =>
             {

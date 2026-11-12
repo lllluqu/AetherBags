@@ -15,15 +15,15 @@ public sealed class StateFiltersSection(Func<UserCategoryDefinition> getCategory
         if (_initialized) return;
         _initialized = true;
 
-        AddFilter("Untradable", def => def.Rules.Untradable);
-        AddFilter("Unique", def => def.Rules.Unique);
-        AddFilter("Collectable", def => def.Rules.Collectable);
-        AddFilter("Dyeable", def => def.Rules.Dyeable);
-        AddFilter("Repairable", def => def.Rules.Repairable);
-        AddFilter("High Quality", def => def.Rules.HighQuality);
-        AddFilter("Desynthesizable", def => def.Rules.Desynthesizable);
-        AddFilter("Glamourable", def => def.Rules.Glamourable);
-        AddFilter("Spiritbonded", def => def.Rules.FullySpiritbonded);
+        AddFilter(Loc.T("Untradable"), def => def.Rules.Untradable);
+        AddFilter(Loc.T("Unique"), def => def.Rules.Unique);
+        AddFilter(Loc.T("Collectable"), def => def.Rules.Collectable);
+        AddFilter(Loc.T("Dyeable"), def => def.Rules.Dyeable);
+        AddFilter(Loc.T("Repairable"), def => def.Rules.Repairable);
+        AddFilter(Loc.T("High Quality"), def => def.Rules.HighQuality);
+        AddFilter(Loc.T("Desynthesizable"), def => def.Rules.Desynthesizable);
+        AddFilter(Loc.T("Glamourable"), def => def.Rules.Glamourable);
+        AddFilter(Loc.T("Spiritbonded"), def => def.Rules.FullySpiritbonded);
 
         RecalculateLayout();
     }

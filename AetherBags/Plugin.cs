@@ -25,6 +25,8 @@ public class Plugin : IDalamudPlugin
 
         System.Config = Util.LoadConfigOrDefault();
 
+        Loc.Initialize(System.Config.General.Language);
+
         BackupHelper.DoConfigBackup(pluginInterface);
 
         KamiToolKitLibrary.Initialize(pluginInterface);
@@ -36,36 +38,36 @@ public class Plugin : IDalamudPlugin
 
         System.AddonInventoryWindow = new AddonInventoryWindow
         {
-            InternalName = "AetherBags_MainBags",
+            InternalName = "AetherBagsCN_MainBags",
             Title = "AetherBags",
             Size = new Vector2(750, 750),
         };
 
         System.AddonSaddleBagWindow = new AddonSaddleBagWindow
         {
-            InternalName = "AetherBags_SaddleBag",
-            Title = "AetherSaddlebag",
+            InternalName = "AetherBagsCN_SaddleBag",
+            Title = Loc.T("AetherSaddlebag"),
             Size = new Vector2(750, 750),
         };
 
         System.AddonRetainerWindow = new AddonRetainerWindow
         {
-            InternalName = "AetherBags_Retainer",
-            Title = "AetherRetainerbag",
+            InternalName = "AetherBagsCN_Retainer",
+            Title = Loc.T("AetherRetainerbag"),
             Size = new Vector2(750, 750),
         };
 
         System.AddonConfigurationWindow = new AddonConfigurationWindow
         {
-            InternalName = "AetherBags_Config",
-            Title = "AetherBags Config",
+            InternalName = "AetherBagsCN_Config",
+            Title = Loc.T("AetherBags Config"),
             Size = new Vector2(640, 512),
         };
 
         System.AddonChangelogWindow = new AddonChangelogWindow
         {
-            InternalName = "AetherBags_Changelog",
-            Title = "AetherBags Changelog",
+            InternalName = "AetherBagsCN_Changelog",
+            Title = Loc.T("AetherBags Changelog"),
             Size = new Vector2(640, 512),
         };
 
@@ -118,6 +120,7 @@ public class Plugin : IDalamudPlugin
     private void OnLogin()
     {
         System.Config = Util.LoadConfigOrDefault();
+        Loc.SetSetting(System.Config.General.Language);
         System.IPC.RefreshExternalSources();
         System.LootedItemsTracker.Enable();
 

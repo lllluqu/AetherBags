@@ -65,7 +65,7 @@ public class AddonCategoryConfigurationWindow : NativeAddon
             FontSize = 14,
             LineSpacing = 22,
             FontType = FontType.Axis,
-            String = "Please select a category on the left or add one.",
+            String = Loc.T("Please select a category on the left or add one."),
             TextColor = ColorHelper.GetColor(1),
         };
         _nothingSelectedTextNode.AttachNode(this);
@@ -138,7 +138,7 @@ public class AddonCategoryConfigurationWindow : NativeAddon
     {
         var newCategory = new UserCategoryDefinition
         {
-            Name = $"New Category {System.Config.Categories.UserCategories.Count + 1}",
+            Name = Loc.T("New Category {0}", System.Config.Categories.UserCategories.Count + 1),
             Order = System.Config.Categories.UserCategories.Count,
         };
 

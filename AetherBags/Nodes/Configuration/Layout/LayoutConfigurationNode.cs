@@ -25,7 +25,7 @@ internal class LayoutConfigurationNode : TabbedVerticalListNode
         var titleNode = new CategoryTextNode
         {
             Height = 18,
-            String = "Layout Configuration",
+            String = Loc.T("Layout Configuration"),
         };
         AddNode(titleNode);
 
@@ -42,7 +42,7 @@ internal class LayoutConfigurationNode : TabbedVerticalListNode
         {
             Size = Size with { Y = 18 },
             IsVisible = true,
-            String = "Show Recently Looted Section",
+            String = Loc.T("Show Recently Looted Section"),
             IsChecked = config.ShowRecentlyLooted,
             OnClick = isChecked =>
             {
@@ -60,7 +60,7 @@ internal class LayoutConfigurationNode : TabbedVerticalListNode
 
         var recentlyLootedColorNode = new ColorInputRow
         {
-            Label = "Highlight Color",
+            Label = Loc.T("Highlight Color"),
             Size = new Vector2(300, 24),
             CurrentColor = config.RecentlyLootedHighlightColor,
             DefaultColor = new GeneralSettings().RecentlyLootedHighlightColor,
@@ -75,7 +75,7 @@ internal class LayoutConfigurationNode : TabbedVerticalListNode
         {
             Size = Size with { Y = 18 },
             IsVisible = true,
-            String = "Highlight Recently Looted Items",
+            String = Loc.T("Highlight Recently Looted Items"),
             IsChecked = config.HighlightRecentlyLootedItems,
             OnClick = isChecked =>
             {
@@ -94,7 +94,7 @@ internal class LayoutConfigurationNode : TabbedVerticalListNode
         {
             Size = Size with { Y = 18 },
             IsVisible = true,
-            String = "Show Category Item Amount",
+            String = Loc.T("Show Category Item Amount"),
             IsChecked = config.ShowCategoryItemCount,
             OnClick = isChecked =>
             {
@@ -108,8 +108,8 @@ internal class LayoutConfigurationNode : TabbedVerticalListNode
         {
             Height = 18,
             IsVisible = true,
-            String = "Use Compact Packing",
-            TextTooltip = "Reorders categories to fill empty space at the end of rows.\nDisable to keep your configured order exactly.",
+            String = Loc.T("Use Compact Packing"),
+            TextTooltip = Loc.T("Reorders categories to fill empty space at the end of rows.\nDisable to keep your configured order exactly."),
             IsChecked = config.CompactPackingEnabled,
             OnClick = isChecked =>
             {
@@ -127,8 +127,8 @@ internal class LayoutConfigurationNode : TabbedVerticalListNode
         {
             Height = 18,
             IsVisible = true,
-            String = "Prefer Largest Fit",
-            TextTooltip = "Fills row gaps with the widest category that fits, for the tightest layout.\nDisable to fill with the next available category and stay closer to your configured order.",
+            String = Loc.T("Prefer Largest Fit"),
+            TextTooltip = Loc.T("Fills row gaps with the widest category that fits, for the tightest layout.\nDisable to fill with the next available category and stay closer to your configured order."),
             IsEnabled = config.CompactPackingEnabled,
             IsChecked = config.CompactPreferLargestFit,
             OnClick = isChecked =>
@@ -143,8 +143,8 @@ internal class LayoutConfigurationNode : TabbedVerticalListNode
         {
             Height = 18,
             IsVisible = true,
-            String = "Use Stable Insert",
-            TextTooltip = "Keeps category positions consistent when packing reshuffles them.\nDisable only if you don't mind nearby categories shifting between refreshes.",
+            String = Loc.T("Use Stable Insert"),
+            TextTooltip = Loc.T("Keeps category positions consistent when packing reshuffles them.\nDisable only if you don't mind nearby categories shifting between refreshes."),
             IsEnabled = config.CompactPackingEnabled,
             IsChecked = config.CompactStableInsert,
             OnClick = isChecked =>

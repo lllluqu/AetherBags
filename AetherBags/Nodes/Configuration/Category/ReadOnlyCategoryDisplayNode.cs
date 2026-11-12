@@ -55,10 +55,7 @@ public sealed class ReadOnlyCategoryDisplayNode : SimpleComponentNode
             TextColor = ColorHelper.GetColor(8),
             TextFlags = TextFlags.WordWrap | TextFlags.MultiLine,
             LineSpacing = 18,
-            String = "This is a built-in game category. To customize it (rename, " +
-                    "recolor, change items, pin), you must first override it.\n\n" +
-                    "Overriding creates an editable user copy that takes over those items. " +
-                    "The original will be hidden from your list until the override is deleted.",
+            String = Loc.T("This is a built-in game category. To customize it (rename, recolor, change items, pin), you must first override it.\n\nOverriding creates an editable user copy that takes over those items. The original will be hidden from your list until the override is deleted."),
         };
         _explanationLabel.AttachNode(this);
 
@@ -66,9 +63,8 @@ public sealed class ReadOnlyCategoryDisplayNode : SimpleComponentNode
         {
             Position = new Vector2(0, 172),
             Size = new Vector2(180, 32),
-            String = "Override",
-            TextTooltip = "Hold to create an editable user copy that overrides this category.\n" +
-                          "The original will be hidden until you delete the override.",
+            String = Loc.T("Override"),
+            TextTooltip = Loc.T("Hold to create an editable user copy that overrides this category.\nThe original will be hidden until you delete the override."),
             OnClick = HandleOverride,
         };
         _overrideButton.AttachNode(this);
@@ -89,10 +85,9 @@ public sealed class ReadOnlyCategoryDisplayNode : SimpleComponentNode
         _explanationLabel.String = wrapper.Kind switch
         {
             CategoryWrapperKind.ExternalSource =>
-                "This category is provided by a built-in source. It groups its items automatically and cannot be renamed, recolored, or removed.",
+                Loc.T("This category is provided by a built-in source. It groups its items automatically and cannot be renamed, recolored, or removed."),
             _ =>
-                "This is a built-in game category. To customize it (rename, recolor, change items, pin), you must first override it.\n\n" +
-                "Overriding creates an editable user copy that takes over those items. The original will be hidden from your list until the override is deleted.",
+                Loc.T("This is a built-in game category. To customize it (rename, recolor, change items, pin), you must first override it.\n\nOverriding creates an editable user copy that takes over those items. The original will be hidden from your list until the override is deleted."),
         };
         _overrideButton.IsVisible = wrapper.Kind == CategoryWrapperKind.GameCategory;
         _overrideButton.Reset();

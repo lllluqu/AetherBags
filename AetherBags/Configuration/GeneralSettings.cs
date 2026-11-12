@@ -5,6 +5,7 @@ namespace AetherBags.Configuration;
 
 public class GeneralSettings
 {
+    public PluginLanguage Language { get; set; } = PluginLanguage.Auto;
     public InventoryStackMode StackMode { get; set; } = InventoryStackMode.AggregateByItemId;
     public bool AggregateUnstackableItems { get; set; } = true;
     public SearchMode SearchMode { get; set; } = SearchMode.Highlight;

@@ -41,7 +41,7 @@ public class Keybind
 
     public override string ToString()
     {
-        if (Key == VirtualKey.NO_KEY) return "None";
+        if (Key == VirtualKey.NO_KEY) return Loc.T("None");
 
         return string.Join(" + ", Modifiers.OrderByModifier().Append(Key).Select(key => key.GetDisplayName()));
     }
@@ -62,7 +62,7 @@ public static class VirtualKeyExtensions
         VirtualKey.CONTROL => "Ctrl",
         VirtualKey.SHIFT => "Shift",
         VirtualKey.MENU => "Alt",
-        VirtualKey.NO_KEY => "None",
+        VirtualKey.NO_KEY => Loc.T("None"),
         _ => key.ToString()
     };
 

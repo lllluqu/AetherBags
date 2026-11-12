@@ -51,7 +51,7 @@ public sealed class ItemSortCriteriaEditorNode : VerticalListNode
             Size = new Vector2(RowWidth, 18),
             String = label,
             TextColor = ColorHelper.GetColor(8),
-            TextTooltip = "Items are sorted by the first rule, then ties are sorted by the next rule, and so on.",
+            TextTooltip = Loc.T("Items are sorted by the first rule, then ties are sorted by the next rule, and so on."),
         };
         AddNode(_headerLabel);
 
@@ -88,7 +88,7 @@ public sealed class ItemSortCriteriaEditorNode : VerticalListNode
         _addRow.AddNode(new TextButtonNode
         {
             Size = new Vector2(AddButtonWidth, RowHeight),
-            String = "Add",
+            String = Loc.T("Add"),
             OnClick = AddSelectedCriterion,
         });
         _addRow.RecalculateLayout();
@@ -282,7 +282,7 @@ public sealed class ItemSortCriterionItemNode : HorizontalListNode
             AddNode(new LabelTextNode
             {
                 Size = new Vector2(ItemSortCriteriaEditorNode.DirectionWidth, 28),
-                String = "(Global)",
+                String = Loc.T("(Global)"),
                 TextColor = ColorHelper.GetColor(3),
                 AlignmentType = AlignmentType.Center,
             });
@@ -303,7 +303,7 @@ public sealed class ItemSortCriterionItemNode : HorizontalListNode
         {
             Size = new Vector2(28, 28),
             Icon = ButtonIcon.UpArrow,
-            TextTooltip = "Move up",
+            TextTooltip = Loc.T("Move up"),
             IsEnabled = !isFirst,
             OnClick = () => OnMoveUp?.Invoke(),
         });
@@ -312,7 +312,7 @@ public sealed class ItemSortCriterionItemNode : HorizontalListNode
         {
             Size = new Vector2(28, 28),
             Icon = ButtonIcon.ArrowDown,
-            TextTooltip = "Move down",
+            TextTooltip = Loc.T("Move down"),
             IsEnabled = !isLast,
             OnClick = () => OnMoveDown?.Invoke(),
         });
@@ -321,7 +321,7 @@ public sealed class ItemSortCriterionItemNode : HorizontalListNode
         {
             Size = new Vector2(28, 28),
             Icon = ButtonIcon.Cross,
-            TextTooltip = "Remove",
+            TextTooltip = Loc.T("Remove"),
             OnClick = () => OnRemove?.Invoke(),
         });
     }

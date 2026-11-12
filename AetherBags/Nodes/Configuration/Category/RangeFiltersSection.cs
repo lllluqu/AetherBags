@@ -18,7 +18,7 @@ public sealed class RangeFiltersSection(Func<UserCategoryDefinition> getCategory
 
         _levelFilter = new RangeFilterRow
         {
-            Label = "Level",
+            Label = Loc.T("Level"),
             MinBound = 0,
             MaxBound = 200,
             OnFilterChanged = (enabled, min, max) =>
@@ -33,7 +33,7 @@ public sealed class RangeFiltersSection(Func<UserCategoryDefinition> getCategory
 
         _itemLevelFilter = new RangeFilterRow
         {
-            Label = "Item Level",
+            Label = Loc.T("Item Level"),
             MinBound = 0,
             MaxBound = 2000,
             OnFilterChanged = (enabled, min, max) =>
@@ -48,7 +48,7 @@ public sealed class RangeFiltersSection(Func<UserCategoryDefinition> getCategory
 
         _vendorPriceFilter = new RangeFilterRowUint
         {
-            Label = "Vendor Price",
+            Label = Loc.T("Vendor Price"),
             MinBound = 0,
             MaxBound = 9_999_999,
             OnFilterChanged = (enabled, min, max) =>

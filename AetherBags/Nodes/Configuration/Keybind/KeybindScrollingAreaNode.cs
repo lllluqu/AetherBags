@@ -23,21 +23,21 @@ internal sealed class KeybindConfigurationNode : TabbedVerticalListNode
         AddNode(new CategoryTextNode
         {
             Height = 18,
-            String = "Keybind Configuration",
+            String = Loc.T("Keybind Configuration"),
         });
 
         AddTab(1);
 
-        AddNode(KeybindOptionNode.Create("Focus Search Bar", config.SearchFocusEnabled, config.SearchFocusKeybind,
+        AddNode(KeybindOptionNode.Create(Loc.T("Focus Search Bar"), config.SearchFocusEnabled, config.SearchFocusKeybind,
             enabled => config.SearchFocusEnabled = enabled,
             kb => config.SearchFocusKeybind = kb,
             showGameConflicts: false));
 
-        AddNode(KeybindOptionNode.Create("Open Bags + Focus Search", config.OpenBagsEnabled, config.OpenBagsKeybind,
+        AddNode(KeybindOptionNode.Create(Loc.T("Open Bags + Focus Search"), config.OpenBagsEnabled, config.OpenBagsKeybind,
             enabled => config.OpenBagsEnabled = enabled,
             kb => config.OpenBagsKeybind = kb));
 
-        AddNode(KeybindOptionNode.Create("Open Saddlebags + Focus Search", config.OpenSaddlebagsEnabled, config.OpenSaddlebagsKeybind,
+        AddNode(KeybindOptionNode.Create(Loc.T("Open Saddlebags + Focus Search"), config.OpenSaddlebagsEnabled, config.OpenSaddlebagsKeybind,
             enabled => config.OpenSaddlebagsEnabled = enabled,
             kb => config.OpenSaddlebagsKeybind = kb));
     }

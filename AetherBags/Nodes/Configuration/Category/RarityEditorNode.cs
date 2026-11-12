@@ -30,7 +30,7 @@ public sealed class RarityEditorNode :VerticalListNode
         {
             TextFlags = TextFlags.AutoAdjustNodeSize,
             Size = new Vector2(280, 18),
-            String = "Allowed Rarities:",
+            String = Loc.T("Allowed Rarities:"),
             TextColor = ColorHelper.GetColor(8),
         };
         AddNode(headerLabel);

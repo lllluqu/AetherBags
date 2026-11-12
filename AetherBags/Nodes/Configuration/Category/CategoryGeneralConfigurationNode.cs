@@ -37,7 +37,7 @@ public sealed class CategoryGeneralConfigurationNode : VerticalListNode
         LabelTextNode titleNode = new LabelTextNode
         {
             Size = Size with { Y = 18 },
-            String = "Category Configuration",
+            String = Loc.T("Category Configuration"),
             TextColor = ColorHelper.GetColor(2),
             TextOutlineColor = ColorHelper.GetColor(0),
         };
@@ -47,7 +47,7 @@ public sealed class CategoryGeneralConfigurationNode : VerticalListNode
         {
             Size = Size with { Y = 18 },
             IsVisible = true,
-            String = "Categories Enabled",
+            String = Loc.T("Categories Enabled"),
             IsChecked = config.CategoriesEnabled,
             OnClick = isChecked =>
             {
@@ -62,9 +62,9 @@ public sealed class CategoryGeneralConfigurationNode : VerticalListNode
         {
             Size = Size with { Y = 18 },
             IsVisible = true,
-            String = "Game Categories",
+            String = Loc.T("Game Categories"),
             IsChecked = config.GameCategoriesEnabled,
-            TextTooltip = "Use the game's built-in item categories (e.g., Arms, Tools, Armor).",
+            TextTooltip = Loc.T("Use the game's built-in item categories (e.g., Arms, Tools, Armor)."),
             OnClick = isChecked =>
             {
                 config.GameCategoriesEnabled = isChecked;
@@ -77,9 +77,9 @@ public sealed class CategoryGeneralConfigurationNode : VerticalListNode
         {
             Size = Size with { Y = 18 },
             IsVisible = true,
-            String = "User Categories",
+            String = Loc.T("User Categories"),
             IsChecked = config.UserCategoriesEnabled,
-            TextTooltip = "Use your custom-defined categories.",
+            TextTooltip = Loc.T("Use your custom-defined categories."),
             OnClick = isChecked =>
             {
                 config.UserCategoriesEnabled = isChecked;
@@ -93,7 +93,7 @@ public sealed class CategoryGeneralConfigurationNode : VerticalListNode
         LabeledEnumDropdownNode<PluginFilterMode>? bbModeDropdown = new LabeledEnumDropdownNode<PluginFilterMode>
         {
             Size = new Vector2(500, 20),
-            LabelText = "Filter Display Mode",
+            LabelText = Loc.T("Filter Display Mode"),
             LabelTextFlags = TextFlags.AutoAdjustNodeSize,
             IsEnabled = config.BisBuddyEnabled && bisBuddyReady,
             Options = Enum.GetValues<PluginFilterMode>().ToList(),
@@ -113,9 +113,9 @@ public sealed class CategoryGeneralConfigurationNode : VerticalListNode
         {
             Size = Size with { Y = 18 },
             IsVisible = true,
-            String = bisBuddyReady ? "BISBuddy" : "BISBuddy (Not Available)",
+            String = bisBuddyReady ? "BISBuddy" : Loc.T("BISBuddy (Not Available)"),
             IsChecked = config.BisBuddyEnabled,
-            TextTooltip = "Allow BISBuddy to highlight items.",
+            TextTooltip = Loc.T("Allow BISBuddy to highlight items."),
             OnClick = isChecked =>
             {
                 config.BisBuddyEnabled = isChecked;
@@ -136,7 +136,7 @@ public sealed class CategoryGeneralConfigurationNode : VerticalListNode
         LabeledEnumDropdownNode<PluginFilterMode>? atModeDropdown = new LabeledEnumDropdownNode<PluginFilterMode>
         {
             Size = new Vector2(500, 20),
-            LabelText = "Filter Display Mode",
+            LabelText = Loc.T("Filter Display Mode"),
             LabelTextFlags = TextFlags.AutoAdjustNodeSize,
             IsEnabled = config.AllaganToolsCategoriesEnabled && allaganReady,
             Options = Enum.GetValues<PluginFilterMode>().ToList(),
@@ -158,12 +158,12 @@ public sealed class CategoryGeneralConfigurationNode : VerticalListNode
         {
             Size = Size with { Y = 18 },
             IsVisible = true,
-            String = allaganReady ?  "Allagan Tools Filters" : "Allagan Tools Filters (Not Available)",
+            String = allaganReady ?  Loc.T("Allagan Tools Filters") : Loc.T("Allagan Tools Filters (Not Available)"),
             IsChecked = config.AllaganToolsCategoriesEnabled,
             IsEnabled = allaganReady,
             TextTooltip = allaganReady
-                ? "Use search filters from Allagan Tools as categories. Items matching a filter will be grouped together."
-                : "Allagan Tools is not installed or not initialized.",
+                ? Loc.T("Use search filters from Allagan Tools as categories. Items matching a filter will be grouped together.")
+                : Loc.T("Allagan Tools is not installed or not initialized."),
             OnClick = isChecked =>
             {
                 config.AllaganToolsCategoriesEnabled = isChecked;
@@ -184,9 +184,9 @@ public sealed class CategoryGeneralConfigurationNode : VerticalListNode
         {
             Size = Size with { Y = 18 },
             IsVisible = true,
-            String = "Crystals",
+            String = Loc.T("Crystals"),
             IsChecked = config.CrystalsEnabled,
-            TextTooltip = "Group elemental shards, crystals, and clusters into a 'Crystals' category.",
+            TextTooltip = Loc.T("Group elemental shards, crystals, and clusters into a 'Crystals' category."),
             OnClick = isChecked =>
             {
                 config.CrystalsEnabled = isChecked;
@@ -200,9 +200,9 @@ public sealed class CategoryGeneralConfigurationNode : VerticalListNode
         {
             Size = Size with { Y = 18 },
             IsVisible = true,
-            String = "Key Items",
+            String = Loc.T("Key Items"),
             IsChecked = config.KeyItemsEnabled,
-            TextTooltip = "Show quest and event-tied key items in a 'Key Items' category.",
+            TextTooltip = Loc.T("Show quest and event-tied key items in a 'Key Items' category."),
             OnClick = isChecked =>
             {
                 config.KeyItemsEnabled = isChecked;
@@ -216,9 +216,9 @@ public sealed class CategoryGeneralConfigurationNode : VerticalListNode
         {
             Size = Size with { Y = 18 },
             IsVisible = true,
-            String = "Show uncategorized section without a label",
+            String = Loc.T("Show uncategorized section without a label"),
             IsChecked = config.BlankMiscCategoryName,
-            TextTooltip = "When items are collected into the fallback Misc section, hide the 'Misc' title and count.",
+            TextTooltip = Loc.T("When items are collected into the fallback Misc section, hide the 'Misc' title and count."),
             OnClick = isChecked =>
             {
                 config.BlankMiscCategoryName = isChecked;
@@ -229,7 +229,7 @@ public sealed class CategoryGeneralConfigurationNode : VerticalListNode
 
         AddIndented(new ResNode { Height = 8 });
 
-        var defaultItemSortEditor = new ItemSortCriteriaEditorNode("Default Item Sort Priority:", allowUseGlobal: false, allowCustomOrder: false);
+        var defaultItemSortEditor = new ItemSortCriteriaEditorNode(Loc.T("Default Item Sort Priority:"), allowUseGlobal: false, allowCustomOrder: false);
         defaultItemSortEditor.OnChanged = () =>
         {
             config.DefaultItemSortCriteria = defaultItemSortEditor.GetCriteria();

@@ -224,7 +224,7 @@ public class BisBuddyIPC : IDisposable
         private int _version;
 
         public string SourceName => "BisBuddy";
-        public string DisplayName => "Best in Slot";
+        public string DisplayName => Loc.T("Best in Slot");
         public int Priority => 100;
         public bool IsReady => _ipc.IsReady;
         public int Version => _version;
@@ -277,8 +277,8 @@ public class BisBuddyIPC : IDisposable
                 {
                     result[itemId] = new ExternalCategoryAssignment(
                         CategoryKey: categoryKey,
-                        CategoryName: "[BiS] Gearset",
-                        CategoryDescription: "Items needed for Best in Slot",
+                        CategoryName: Loc.T("[BiS] Gearset"),
+                        CategoryDescription: Loc.T("Items needed for Best in Slot"),
                         CategoryColor: color,
                         ItemOverlayColor: new Vector3(color.X, color.Y, color.Z),
                         SubPriority: 0
@@ -340,7 +340,7 @@ public class BisBuddyIPC : IDisposable
                 new ItemRelationship(
                     Type: RelationshipType.SameSet,
                     RelatedItemIds: sameSetItems.ToArray(),
-                    GroupLabel: "Same Gearset",
+                    GroupLabel: Loc.T("Same Gearset"),
                     HighlightColor: new Vector3(entry.Color.X, entry.Color.Y, entry.Color.Z)
                 )
             };

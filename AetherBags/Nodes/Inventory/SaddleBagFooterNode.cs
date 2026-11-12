@@ -28,6 +28,6 @@ public class SaddleBagFooterNode : SimpleComponentNode
     public ReadOnlySeString SlotAmountText
     {
         get => _slotCounterNode.String;
-        set => _slotCounterNode.String = $"Slots: {value}";
+        set => _slotCounterNode.String = Loc.T("Slots: {0}", value);
     }
 }

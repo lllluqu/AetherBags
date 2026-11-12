@@ -19,7 +19,7 @@ public sealed class RangeFilterRow : VerticalListNode
     public required ReadOnlySeString Label
     {
         get => _enabledCheckbox.String.ExtractText().Replace(" Filter", "");
-        init => _enabledCheckbox.String = $"{value} Filter";
+        init => _enabledCheckbox.String = Loc.T($"{value} Filter");
     }
 
     public int MinBound
@@ -66,7 +66,7 @@ public sealed class RangeFilterRow : VerticalListNode
         {
             TextFlags = TextFlags.AutoAdjustNodeSize,
             Size = new Vector2(30, 28),
-            String = "Min:",
+            String = Loc.T("Min:"),
         });
 
         _minNode = new NumericInputNode
@@ -83,7 +83,7 @@ public sealed class RangeFilterRow : VerticalListNode
         {
             TextFlags = TextFlags.AutoAdjustNodeSize,
             Size = new Vector2(30, 28),
-            String = "Max:",
+            String = Loc.T("Max:"),
         });
 
         _maxNode = new NumericInputNode
@@ -118,7 +118,7 @@ public sealed class RangeFilterRowUint : VerticalListNode
     public required ReadOnlySeString Label
     {
         get => _enabledCheckbox.String.ExtractText().Replace(" Filter", "");
-        init => _enabledCheckbox.String = $"{value} Filter";
+        init => _enabledCheckbox.String = Loc.T($"{value} Filter");
     }
 
     public int MinBound
@@ -166,7 +166,7 @@ public sealed class RangeFilterRowUint : VerticalListNode
         {
             TextFlags = TextFlags.AutoAdjustNodeSize,
             Size = new Vector2(30, 28),
-            String = "Min:",
+            String = Loc.T("Min:"),
         });
 
         _minNode = new NumericInputNode
@@ -184,7 +184,7 @@ public sealed class RangeFilterRowUint : VerticalListNode
         {
             TextFlags = TextFlags.AutoAdjustNodeSize,
             Size = new Vector2(30, 28),
-            String = "Max:",
+            String = Loc.T("Max:"),
         });
 
         _maxNode = new NumericInputNode

@@ -157,7 +157,7 @@ public class UserCategoryDefinition
     public bool Enabled { get; set; } = true;
     public bool Pinned { get; set; } = false;
     public string Id { get; set; } = Guid.NewGuid().ToString("N");
-    public string Name { get; set; } = "New Category";
+    public string Name { get; set; } = Loc.T("New Category");
     public string Description { get; set; } = string.Empty;
 
     public int Order { get; set; }

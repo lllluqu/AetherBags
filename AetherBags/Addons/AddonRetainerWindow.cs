@@ -91,7 +91,7 @@ public unsafe class AddonRetainerWindow : InventoryAddonBase
         {
             Size = new Vector2(120, 28),
             AddColor = _tintColor,
-            String = "Entrust Duplicates",
+            String = Loc.T("Entrust Duplicates"),
             OnClick = OnEntrustDuplicates,
         };
         _entrustDuplicatesButton.AttachNode(this);

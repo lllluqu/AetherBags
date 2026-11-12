@@ -35,9 +35,9 @@ public sealed class CategorySourceOrderEditorNode : VerticalListNode
         {
             TextFlags = TextFlags.AutoAdjustNodeSize,
             Size = new Vector2(RowWidth, 18),
-            String = "Category Source Display Order:",
+            String = Loc.T("Category Source Display Order:"),
             TextColor = ColorHelper.GetColor(8),
-            TextTooltip = "Use the arrows to choose which category sources are shown first. This changes display order only, not which category claims an item.\nNew sources are inserted at their requested default position; reordering is preserved.",
+            TextTooltip = Loc.T("Use the arrows to choose which category sources are shown first. This changes display order only, not which category claims an item.\nNew sources are inserted at their requested default position; reordering is preserved."),
         });
 
         _itemsContainer = new VerticalListNode
@@ -127,7 +127,7 @@ public sealed class CategorySourceOrderItemNode : HorizontalListNode
         {
             Size = new Vector2(buttonSize, buttonSize),
             Icon = ButtonIcon.UpArrow,
-            TextTooltip = "Move up",
+            TextTooltip = Loc.T("Move up"),
             IsEnabled = !isFirst,
             OnClick = () => OnMoveUp?.Invoke(),
         });
@@ -136,7 +136,7 @@ public sealed class CategorySourceOrderItemNode : HorizontalListNode
         {
             Size = new Vector2(buttonSize, buttonSize),
             Icon = ButtonIcon.ArrowDown,
-            TextTooltip = "Move down",
+            TextTooltip = Loc.T("Move down"),
             IsEnabled = !isLast,
             OnClick = () => OnMoveDown?.Invoke(),
         });

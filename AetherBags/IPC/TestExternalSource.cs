@@ -11,7 +11,7 @@ public sealed class TestExternalSource : IExternalItemSource, IDisposable
     private bool _isEnabled;
 
     public string SourceName => "TestSource";
-    public string DisplayName => "Test External Source";
+    public string DisplayName => Loc.T("Test External Source");
     public int Priority => 50;
     public bool IsReady => _isEnabled;
     public int Version => _version;
@@ -72,8 +72,8 @@ public sealed class TestExternalSource : IExternalItemSource, IDisposable
         {
             result[itemId] = new ExternalCategoryAssignment(
                 CategoryKey: 0xFFFFA00,
-                CategoryName: "[Test] Category A",
-                CategoryDescription: "Test category A - Potions",
+                CategoryName: Loc.T("[Test] Category A"),
+                CategoryDescription: Loc.T("Test category A - Potions"),
                 CategoryColor: new Vector4(1.0f, 0.3f, 0.3f, 1.0f),
                 ItemOverlayColor: new Vector3(0.15f, 0.0f, 0.0f),
                 SubPriority: 10
@@ -85,8 +85,8 @@ public sealed class TestExternalSource : IExternalItemSource, IDisposable
         {
             result[itemId] = new ExternalCategoryAssignment(
                 CategoryKey: 0xFFFFB00,
-                CategoryName: "[Test] Category B",
-                CategoryDescription: "Test category B - Food",
+                CategoryName: Loc.T("[Test] Category B"),
+                CategoryDescription: Loc.T("Test category B - Food"),
                 CategoryColor: new Vector4(0.3f, 1.0f, 0.3f, 1.0f),
                 ItemOverlayColor: new Vector3(0.0f, 0.15f, 0.0f),
                 SubPriority: 20
@@ -120,7 +120,7 @@ public sealed class TestExternalSource : IExternalItemSource, IDisposable
                 result[itemId] = new ItemDecoration
                 {
                     OverlayColor = new Vector3(0.0f, 0.0f, 0.2f),
-                    TooltipLine = "[Test] This item is highlighted by TestSource",
+                    TooltipLine = Loc.T("[Test] This item is highlighted by TestSource"),
                 };
             }
         }
@@ -137,7 +137,7 @@ public sealed class TestExternalSource : IExternalItemSource, IDisposable
                 ),
                 Border = BorderStyle.Glow,
                 OverlayColor = new Vector3(0.0f, 0.0f, 0.2f),
-                TooltipLine = "[Test] Badge item (glow border)",
+                TooltipLine = Loc.T("[Test] Badge item (glow border)"),
             };
         }
 
@@ -153,7 +153,7 @@ public sealed class TestExternalSource : IExternalItemSource, IDisposable
                 ),
                 Border = BorderStyle.Pulse,
                 OverlayColor = new Vector3(0.0f, 0.0f, 0.2f),
-                TooltipLine = "[Test] Badge item (pulse border)",
+                TooltipLine = Loc.T("[Test] Badge item (pulse border)"),
             };
         }
 
@@ -167,7 +167,7 @@ public sealed class TestExternalSource : IExternalItemSource, IDisposable
         return new[]
         {
             new ContextMenuEntry(
-                Label: "[Test] Log Item ID",
+                Label: Loc.T("[Test] Log Item ID"),
                 IconId: 60026, // Info icon
                 OnClick: ctx =>
                 {
@@ -176,7 +176,7 @@ public sealed class TestExternalSource : IExternalItemSource, IDisposable
                 Order: 100
             ),
             new ContextMenuEntry(
-                Label: "[Test] Toggle Highlight",
+                Label: Loc.T("[Test] Toggle Highlight"),
                 IconId: 60073, // Star icon
                 OnClick: ctx =>
                 {
@@ -249,7 +249,7 @@ public sealed class TestExternalSource : IExternalItemSource, IDisposable
             new ItemRelationship(
                 Type: RelationshipType.SameSet,
                 RelatedItemIds: relatedIds.ToArray(),
-                GroupLabel: "Test Related Set",
+                GroupLabel: Loc.T("Test Related Set"),
                 HighlightColor: Vector3.Zero
             )
         };

@@ -25,7 +25,7 @@ public sealed unsafe class CrystalExternalSource : IExternalItemSource, IInvento
     private bool _isEnabled;
 
     public string SourceName => "CrystalSource";
-    public string DisplayName => "Crystals";
+    public string DisplayName => Loc.T("Crystals");
     public int Priority => 60;
     public bool IsReady => _isEnabled;
     public int Version => _version;
@@ -80,8 +80,8 @@ public sealed unsafe class CrystalExternalSource : IExternalItemSource, IInvento
     {
         var assignment = new ExternalCategoryAssignment(
             CategoryKey: CrystalCategoryKey,
-            CategoryName: "Crystals",
-            CategoryDescription: "Elemental shards, crystals, and clusters",
+            CategoryName: Loc.T("Crystals"),
+            CategoryDescription: Loc.T("Elemental shards, crystals, and clusters"),
             CategoryColor: new Vector4(0.6f, 0.85f, 1.0f, 1.0f),
             ItemOverlayColor: null,
             SubPriority: 10,

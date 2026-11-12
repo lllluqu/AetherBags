@@ -29,7 +29,7 @@ public sealed class ListFiltersSection(Func<UserCategoryDefinition> getCategoryD
 
         _itemIdsEditor = new UintListEditorNode
         {
-            Label = "Allowed Item IDs:",
+            Label = Loc.T("Allowed Item IDs:"),
             MaxValue = Services.DataManager.GetExcelSheet<Item>()?.LastOrDefault().RowId ?? uint.MaxValue,
             LabelResolver = CategoryDefinitionConfigurationNode.ResolveItemName,
             OnSearchButtonClicked = OpenItemPicker,
@@ -43,7 +43,7 @@ public sealed class ListFiltersSection(Func<UserCategoryDefinition> getCategoryD
 
         _namePatternsEditor = new StringListEditorNode
         {
-            Label = "Name Patterns (Regex):",
+            Label = Loc.T("Name Patterns (Regex):"),
             OnChanged = () =>
             {
                 OnListChanged?.Invoke();
@@ -54,7 +54,7 @@ public sealed class ListFiltersSection(Func<UserCategoryDefinition> getCategoryD
 
         _uiCategoriesEditor = new UintListEditorNode
         {
-            Label = "UI Categories:",
+            Label = Loc.T("UI Categories:"),
             MaxValue = Services.DataManager.GetExcelSheet<ItemUICategory>()?.LastOrDefault().RowId ?? uint.MaxValue,
             LabelResolver = CategoryDefinitionConfigurationNode.ResolveUiCategoryName,
             OnSearchButtonClicked = OpenCategoryPicker,
@@ -78,7 +78,7 @@ public sealed class ListFiltersSection(Func<UserCategoryDefinition> getCategoryD
     private void OpenItemPicker() {
         _itemPicker ??= new AddonItemPicker
         {
-            Title = "Select Items to Add",
+            Title = Loc.T("Select Items to Add"),
             InternalName = "Aetherbags_ItemPicker",
             SearchOptions = Services.DataManager.GetExcelSheet<Item>()
                 .Where(i => i.RowId > 0 && !i.Name.IsEmpty)
@@ -94,7 +94,7 @@ public sealed class ListFiltersSection(Func<UserCategoryDefinition> getCategoryD
 
     private void OpenCategoryPicker() {
         _categoryPicker ??= new AddonUICategoryPicker {
-            Title = "Select Categories to Add",
+            Title = Loc.T("Select Categories to Add"),
             InternalName = "Aetherbags_CategoryPicker",
             SearchOptions = Services.DataManager.GetExcelSheet<ItemUICategory>()
                 .Where(i => i.RowId > 0)

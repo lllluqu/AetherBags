@@ -17,15 +17,15 @@ internal sealed class DtrConfigurationNode : TabbedVerticalListNode
         AddNode(new CategoryTextNode
         {
             Height = 18,
-            String = "Server Info Bar",
+            String = Loc.T("Server Info Bar"),
         });
 
         var enabledCheckbox = new CheckboxNode
         {
             Size = Size with { Y = 18 },
             IsVisible = true,
-            String = "Show slot usage in server info bar",
-            TextTooltip = "Left click toggles your bags. Right click toggles your saddlebags.",
+            String = Loc.T("Show slot usage in server info bar"),
+            TextTooltip = Loc.T("Left click toggles your bags. Right click toggles your saddlebags."),
             IsChecked = config.Enabled,
             OnClick = isChecked =>
             {
@@ -40,7 +40,7 @@ internal sealed class DtrConfigurationNode : TabbedVerticalListNode
         AddNode(2, new TextNode
         {
             Size = new Vector2(500, 18),
-            String = "Format String:",
+            String = Loc.T("Format String:"),
         });
 
         var formatInput = new TextInputNode
@@ -64,13 +64,13 @@ internal sealed class DtrConfigurationNode : TabbedVerticalListNode
         AddNode(2, new TextNode
         {
             Size = new Vector2(500, 34),
-            String = "Examples: [free] slots left, [used]/[total], [percent:0]%",
+            String = Loc.T("Examples: [free] slots left, [used]/[total], [percent:0]%"),
         });
 
         AddNode(2, new TextNode
         {
             Size = new Vector2(500, 18),
-            String = "Insert Tag:",
+            String = Loc.T("Insert Tag:"),
         });
 
         var tagDropdown = new TextDropDownNode
@@ -78,7 +78,7 @@ internal sealed class DtrConfigurationNode : TabbedVerticalListNode
             Size = new Vector2(320, 24),
             Options = DtrTagDefinitions.GetLabels(),
             MaxListOptions = 8,
-            SelectedOption = DtrTagDefinitions.DefaultDropdownLabel,
+            SelectedOption = DtrTagDefinitions.DefaultLabel,
         };
         tagDropdown.OnOptionSelected = selected =>
         {
@@ -91,14 +91,14 @@ internal sealed class DtrConfigurationNode : TabbedVerticalListNode
             formatInput.String = current + tag;
             config.FormatString = formatInput.String.ExtractText();
             System.DtrService.UpdateBar();
-            tagDropdown.SelectedOption = DtrTagDefinitions.DefaultDropdownLabel;
+            tagDropdown.SelectedOption = DtrTagDefinitions.DefaultLabel;
         };
         AddNode(2, tagDropdown);
 
         AddNode(2, new TextButtonNode
         {
             Size = new Vector2(120, 28),
-            String = "Reset Format",
+            String = Loc.T("Reset Format"),
             OnClick = () =>
             {
                 config.FormatString = DtrSettings.DefaultFormatString;

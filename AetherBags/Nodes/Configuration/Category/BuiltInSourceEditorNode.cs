@@ -77,7 +77,7 @@ public sealed class BuiltInSourceEditorNode : SimpleComponentNode
         _enabledCheckbox = new CheckboxNode
         {
             Size = new Vector2(300, 20),
-            String = "Enabled",
+            String = Loc.T("Enabled"),
             OnClick = isChecked =>
             {
                 if (_isRefreshing || _override is null) return;
@@ -90,7 +90,7 @@ public sealed class BuiltInSourceEditorNode : SimpleComponentNode
         _pinCheckbox = new CheckboxNode
         {
             Size = new Vector2(300, 20),
-            String = "Pinned",
+            String = Loc.T("Pinned"),
             OnClick = isChecked =>
             {
                 if (_isRefreshing || _override is null) return;
@@ -102,7 +102,7 @@ public sealed class BuiltInSourceEditorNode : SimpleComponentNode
 
         _colorInput = new ColorInputRow
         {
-            Label = "Color",
+            Label = Loc.T("Color"),
             Size = new Vector2(300, 28),
             CurrentColor = ColorHelper.GetColor(50),
             DefaultColor = ColorHelper.GetColor(50),
@@ -117,7 +117,7 @@ public sealed class BuiltInSourceEditorNode : SimpleComponentNode
         {
             TextFlags = TextFlags.AutoAdjustNodeSize,
             Size = new Vector2(80, 20),
-            String = "Priority:",
+            String = Loc.T("Priority:"),
         });
         _priorityInput = new NumericInputNode
         {
@@ -138,7 +138,7 @@ public sealed class BuiltInSourceEditorNode : SimpleComponentNode
         {
             TextFlags = TextFlags.AutoAdjustNodeSize,
             Size = new Vector2(80, 20),
-            String = "Order:",
+            String = Loc.T("Order:"),
         });
         _orderInput = new NumericInputNode
         {
@@ -157,7 +157,7 @@ public sealed class BuiltInSourceEditorNode : SimpleComponentNode
 
         list.AddNode(new ResNode { Height = 8 });
 
-        _sortEditor = new ItemSortCriteriaEditorNode("Item Sort Priority:", allowUseGlobal: true, allowCustomOrder: true);
+        _sortEditor = new ItemSortCriteriaEditorNode(Loc.T("Item Sort Priority:"), allowUseGlobal: true, allowCustomOrder: true);
         _sortEditor.OnLayoutChanged = HandleLayoutChange;
         _sortEditor.OnChanged = () =>
         {
@@ -170,7 +170,7 @@ public sealed class BuiltInSourceEditorNode : SimpleComponentNode
 
         _customOrderEditor = new UintListEditorNode
         {
-            Label = "Custom Item Order:",
+            Label = Loc.T("Custom Item Order:"),
             MaxValue = Services.DataManager.GetExcelSheet<Item>().LastOrDefault().RowId,
             LabelResolver = CategoryDefinitionConfigurationNode.ResolveItemName,
             OnSearchButtonClicked = OpenItemPicker,
@@ -202,7 +202,7 @@ public sealed class BuiltInSourceEditorNode : SimpleComponentNode
         try
         {
             _headerLabel.String = source.DisplayName;
-            _subLabel.String = source.IsBuiltIn ? "★ Built-in Source" : "✦ External Source";
+            _subLabel.String = source.IsBuiltIn ? Loc.T("★ Built-in Source") : Loc.T("✦ External Source");
 
             var defaults = ResolveSourceDefaults(source);
             _enabledCheckbox.IsChecked = preferences.Enabled;
@@ -249,7 +249,7 @@ public sealed class BuiltInSourceEditorNode : SimpleComponentNode
     {
         _itemPicker ??= new AddonItemPicker
         {
-            Title = "Select Items to Order",
+            Title = Loc.T("Select Items to Order"),
             InternalName = "Aetherbags_OrderItemPicker",
             SearchOptions = Services.DataManager.GetExcelSheet<Item>()
                 .Where(i => i.RowId > 0 && !i.Name.IsEmpty)

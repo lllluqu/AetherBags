@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Numerics;
 using AetherBags.Addons.Config;
 using KamiToolKit;
@@ -53,8 +53,8 @@ public static class KeybindOptionNode
         {
             var addon = new KeybindConfigAddon
             {
-                InternalName = $"AetherBags_KeybindConfig_{Guid.NewGuid():N}",
-                Title = "Set Keybind",
+                InternalName = $"AetherBagsCN_KeybindConfig_{Guid.NewGuid():N}",
+                Title = Loc.T("Set Keybind"),
                 InitialKeybind = currentKeybind,
                 ShowGameConflicts = showGameConflicts,
                 OnKeybindChanged = newKeybind =>

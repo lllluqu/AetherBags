@@ -87,10 +87,10 @@ public class AddonConfigurationWindow : NativeAddon
         _tabContent.Add(_currencyScrollingAreaNode);
         _tabContent.Add(_keybindScrollingAreaNode);
 
-        _tabBarNode.AddTab("General", () => SwitchTab(0));
-        _tabBarNode.AddTab("Categories", () => SwitchTab(1));
-        _tabBarNode.AddTab("Currency", () => SwitchTab(2));
-        _tabBarNode.AddTab("Keybinds", () => SwitchTab(3));
+        _tabBarNode.AddTab(Loc.T("General"), () => SwitchTab(0));
+        _tabBarNode.AddTab(Loc.T("Categories"), () => SwitchTab(1));
+        _tabBarNode.AddTab(Loc.T("Currency"), () => SwitchTab(2));
+        _tabBarNode.AddTab(Loc.T("Keybinds"), () => SwitchTab(3));
 
         base.OnSetup(addon, atkValueSpan);
     }

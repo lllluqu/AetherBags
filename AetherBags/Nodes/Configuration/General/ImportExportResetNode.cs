@@ -24,7 +24,7 @@ public sealed class ImportExportResetNode : HorizontalListNode
             Height = 30,
             Width = 30,
             IsVisible = true,
-            TextTooltip = " Import Configuration\n(hold shift to confirm)",
+            TextTooltip = Loc.T(" Import Configuration\n(hold shift to confirm)"),
             TexturePath = Path.Combine(Services.PluginInterface.AssemblyLocation.Directory?.FullName!, @"Assets\Icons\download.png"),
             OnClick = ImportConfig
         });
@@ -34,7 +34,7 @@ public sealed class ImportExportResetNode : HorizontalListNode
             Height = 30,
             Width = 30,
             IsVisible = true,
-            TextTooltip = "Export Configuration",
+            TextTooltip = Loc.T("Export Configuration"),
             TexturePath = Path.Combine(Services.PluginInterface.AssemblyLocation.Directory?.FullName!, @"Assets\Icons\upload.png"),
             OnClick = ExportConfig
         });
@@ -44,9 +44,9 @@ public sealed class ImportExportResetNode : HorizontalListNode
             Y = 0,
             Height = 32,
             Width = 100,
-            String = "Reset",
+            String = Loc.T("Reset"),
             TextNode = { TextColor = ColorHelper.GetColor(50) },
-            TextTooltip = "   Reset configuration\n(hold button to confirm)",
+            TextTooltip = Loc.T("   Reset configuration\n(hold button to confirm)"),
             OnClick = ResetConfig
         });
     }

@@ -18,15 +18,13 @@ internal sealed class CompactLookaheadNode : SimpleComponentNode
     {
         GeneralSettings config = System.Config.General;
 
-        const string lookaheadTooltip =
-            "How many upcoming categories to consider when filling a row gap.\n" +
-            "Higher values pack tighter; lower values stay closer to your configured order.";
+        string lookaheadTooltip = Loc.T("How many upcoming categories to consider when filling a row gap.\nHigher values pack tighter; lower values stay closer to your configured order.");
 
         TitleNode = new LabelTextNode
         {
             TextFlags = TextFlags.AutoAdjustNodeSize,
             Height = 24,
-            String = "Compact Lookahead",
+            String = Loc.T("Compact Lookahead"),
             TextTooltip = lookaheadTooltip,
         };
         TitleNode.AttachNode(this);

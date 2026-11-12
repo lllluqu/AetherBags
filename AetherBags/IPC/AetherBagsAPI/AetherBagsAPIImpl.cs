@@ -206,7 +206,7 @@ public class AetherBagsAPIImpl : IAetherBagsAPI
             MaximumVanillaInventoryBypassTimeoutMs);
 
         var lease = new VanillaInventoryBypassLease(
-            string.IsNullOrWhiteSpace(owner) ? "Unknown" : owner.Trim(),
+            string.IsNullOrWhiteSpace(owner) ? Loc.T("Unknown") : owner.Trim(),
             DateTimeOffset.UtcNow.AddMilliseconds(clampedTimeoutMs));
 
         lock (_vanillaInventoryBypassLock)

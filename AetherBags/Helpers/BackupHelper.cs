@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -12,7 +12,7 @@ namespace AetherBags.Helpers;
 // Thanks Caraxi
 public static class BackupHelper {
     private const int MaxBackups = 10;
-    private const string Name = "AetherBags";
+    private const string Name = "AetherBagsCN";
     public static void DoConfigBackup(IDalamudPluginInterface pluginInterface) {
         Services.Logger.DebugOnly("Backup configuration start.");
         try {

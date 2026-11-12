@@ -1,22 +1,28 @@
 <Project Sdk="Dalamud.NET.Sdk/15.0.0">
     <PropertyGroup>
-        <Version>1.0.0.5</Version>
+        <Version>1.0.0.6</Version>
+        <AssemblyName>AetherBagsCN</AssemblyName>
+        <RootNamespace>AetherBags</RootNamespace>
     </PropertyGroup>
 
     <PropertyGroup>
-        <Author>Zeffuro, Pie Lover</Author>
-        <Name>AetherBags</Name>
-        <InternalName>AetherBags</InternalName>
-        <Punchline>Never think too hard about your bags again!</Punchline>
-        <Description>This plugin replaces your inventory with it's own categorified inventory addon.</Description>
-        <RepoUrl>https://github.com/Zeffuro/AetherBags</RepoUrl>
-        <IconUrl>https://raw.githubusercontent.com/Zeffuro/AetherBags/master/images/icon.png</IconUrl>
-        <Tags>inventory;bags;organization;categories;filters;sorting;qol;ui</Tags>
+        <Author>Zeffuro, Pie Lover; 汉化: llluqu</Author>
+        <Name>AetherBags 汉化版</Name>
+        <InternalName>AetherBagsCN</InternalName>
+        <Punchline>再也不用对着背包发愁！</Punchline>
+        <Description>用游戏原生 UI 按自定义分类整理并显示背包物品，支持筛选、排序、固定分类与货币显示。</Description>
+        <RepoUrl>https://github.com/lllluqu/AetherBags</RepoUrl>
+        <IconUrl>https://raw.githubusercontent.com/lllluqu/AetherBags/master/Images/icon.png</IconUrl>
+        <Tags>inventory;bags;organization;categories;filters;sorting;qol;ui;chinese;汉化</Tags>
         <AcceptsFeedback>true</AcceptsFeedback>
     </PropertyGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\KamiToolKit\KamiToolKit.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="Localization\zh-CN.json" LogicalName="AetherBags.Localization.zh-CN.json" />
     </ItemGroup>
 
     <ItemGroup>

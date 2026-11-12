@@ -37,8 +37,8 @@ public class WotsItIPC : IDisposable
 
             _searchGuid = _registerWithSearch?.InvokeFunc(
                 Services.PluginInterface.InternalName,
-                "AetherBags: Search Inventory",
-                "AetherBags Search",
+                Loc.T("AetherBags: Search Inventory"),
+                Loc.T("AetherBags Search"),
                 66472 // Icon ID
             );
         }

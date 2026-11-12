@@ -20,7 +20,7 @@ public sealed unsafe class KeyItemExternalSource : IExternalItemSource, IInvento
     private bool _isEnabled;
 
     public string SourceName => "KeyItemSource";
-    public string DisplayName => "Key Items";
+    public string DisplayName => Loc.T("Key Items");
     public int Priority => 60;
     public bool IsReady => _isEnabled;
     public int Version => _version;
@@ -65,8 +65,8 @@ public sealed unsafe class KeyItemExternalSource : IExternalItemSource, IInvento
     {
         var assignment = new ExternalCategoryAssignment(
             CategoryKey: KeyItemCategoryKey,
-            CategoryName: "Key Items",
-            CategoryDescription: "Quest and event-tied key items",
+            CategoryName: Loc.T("Key Items"),
+            CategoryDescription: Loc.T("Quest and event-tied key items"),
             CategoryColor: new Vector4(1.0f, 0.85f, 0.4f, 1.0f),
             ItemOverlayColor: null,
             SubPriority: 20,

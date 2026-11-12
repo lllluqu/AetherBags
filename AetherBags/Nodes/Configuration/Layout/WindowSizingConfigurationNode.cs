@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using System.Numerics;
 using AetherBags.Configuration;
@@ -13,9 +13,9 @@ internal sealed class WindowSizingConfigurationNode : TabbedVerticalListNode
 {
     private static readonly WindowSizingDefinition[] Definitions =
     [
-        new("Inventory", config => config.InventoryWindowSizing, InventoryWindowSizingLimits.Inventory),
-        new("Saddlebags", config => config.SaddleBagWindowSizing, InventoryWindowSizingLimits.SaddleBag),
-        new("Retainers", config => config.RetainerWindowSizing, InventoryWindowSizingLimits.Retainer),
+        new(Loc.T("Inventory"), config => config.InventoryWindowSizing, InventoryWindowSizingLimits.Inventory),
+        new(Loc.T("Saddlebags"), config => config.SaddleBagWindowSizing, InventoryWindowSizingLimits.SaddleBag),
+        new(Loc.T("Retainers"), config => config.RetainerWindowSizing, InventoryWindowSizingLimits.Retainer),
     ];
 
     private readonly Action? _onLayoutChanged;
@@ -29,7 +29,7 @@ internal sealed class WindowSizingConfigurationNode : TabbedVerticalListNode
         var titleNode = new CategoryTextNode
         {
             Height = 18,
-            String = "Window Sizing",
+            String = Loc.T("Window Sizing"),
         };
         AddNode(titleNode);
 
@@ -121,7 +121,7 @@ internal sealed class WindowSizingRowNode : SimpleComponentNode
         {
             Position = new Vector2(InputStartX, 0),
             Size = new Vector2(InputWidth, InputHeight),
-            Label = "W",
+            Label = Loc.T("W"),
             Min = _limits.SafeMinWidth,
             Max = InventoryWindowSizingDefaults.MaxConfigurableWidth,
             OnValueUpdate = OnFixedWidthUpdated,
@@ -132,7 +132,7 @@ internal sealed class WindowSizingRowNode : SimpleComponentNode
         {
             Position = new Vector2(InputSecondColumnX, 0),
             Size = new Vector2(InputWidth, InputHeight),
-            Label = "H",
+            Label = Loc.T("H"),
             Min = _limits.SafeMinHeight,
             Max = InventoryWindowSizingDefaults.MaxConfigurableHeight,
             OnValueUpdate = OnFixedHeightUpdated,
@@ -143,7 +143,7 @@ internal sealed class WindowSizingRowNode : SimpleComponentNode
         {
             Position = new Vector2(InputStartX, 0),
             Size = new Vector2(InputWidth, InputHeight),
-            Label = "W",
+            Label = Loc.T("W"),
             Min = _limits.SafeMinWidth,
             Max = InventoryWindowSizingDefaults.MaxConfigurableWidth,
             OnValueUpdate = OnMinWidthUpdated,
@@ -165,7 +165,7 @@ internal sealed class WindowSizingRowNode : SimpleComponentNode
         {
             Position = new Vector2(InputStartX, InputSecondRowY),
             Size = new Vector2(InputWidth, InputHeight),
-            Label = "H",
+            Label = Loc.T("H"),
             Min = _limits.SafeMinHeight,
             Max = InventoryWindowSizingDefaults.MaxConfigurableHeight,
             OnValueUpdate = OnMinHeightUpdated,

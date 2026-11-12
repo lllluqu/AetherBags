@@ -141,7 +141,7 @@ public class InventoryCategoryNode : InventoryCategoryNodeBase
         _fullHeaderText = string.IsNullOrEmpty(data.Category.Name)
             ? string.Empty
             : System.Config.General.ShowCategoryItemCount
-            ? $"{data.Category.Name} ({data.Items.Count})"
+            ? Loc.T("{0} ({1})", data.Category.Name, data.Items.Count)
             : data.Category.Name;
 
         _categoryNameTextNode.String = _fullHeaderText;

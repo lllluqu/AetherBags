@@ -40,7 +40,7 @@ public sealed class CategoryWrapper
 
     public string GetLabel() => Kind switch
     {
-        CategoryWrapperKind.GeneralSettings => "General Settings",
+        CategoryWrapperKind.GeneralSettings => Loc.T("General Settings"),
         CategoryWrapperKind.GameCategory => ResolveGameCategoryName(GameCategoryId!.Value),
         CategoryWrapperKind.ExternalSource => Source!.DisplayName,
         _ => CategoryDefinition!.Name,
@@ -48,13 +48,13 @@ public sealed class CategoryWrapper
 
     public string GetSubLabel() => Kind switch
     {
-        CategoryWrapperKind.GeneralSettings => "CONFIG",
+        CategoryWrapperKind.GeneralSettings => Loc.T("CONFIG"),
         CategoryWrapperKind.User => UserCategoryMatcher.IsCatchAll(CategoryDefinition!)
-            ? " No valid rules!"
-            : (CategoryDefinition!.Enabled ? "✓ User · Enabled" : " User · Disabled"),
-        CategoryWrapperKind.Override => $"Φ Overrides: {ResolveOverrideSourceName(CategoryDefinition!.OverrideSourceKey!)}",
-        CategoryWrapperKind.ExternalSource => Source!.IsBuiltIn ? "★ Built-in Source" : "✦ External Source",
-        CategoryWrapperKind.GameCategory => "● Game Category",
+            ? Loc.T(" No valid rules!")
+            : (CategoryDefinition!.Enabled ? Loc.T("✓ User · Enabled") : Loc.T(" User · Disabled")),
+        CategoryWrapperKind.Override => Loc.T("Φ Overrides: {0}", ResolveOverrideSourceName(CategoryDefinition!.OverrideSourceKey!)),
+        CategoryWrapperKind.ExternalSource => Source!.IsBuiltIn ? Loc.T("★ Built-in Source") : Loc.T("✦ External Source"),
+        CategoryWrapperKind.GameCategory => Loc.T("● Game Category"),
         _ => string.Empty,
     };
 
@@ -82,9 +82,9 @@ public sealed class CategoryWrapper
         if (sheet.TryGetRow(id, out var row))
         {
             var name = row.Name.ToString();
-            return string.IsNullOrWhiteSpace(name) ? $"Game Category {id}" : name;
+            return string.IsNullOrWhiteSpace(name) ? Loc.T("Game Category {0}", id) : name;
         }
-        return $"Game Category {id}";
+        return Loc.T("Game Category {0}", id);
     }
 
     public static string ResolveOverrideSourceName(string overrideSourceKey)

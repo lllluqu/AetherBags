@@ -27,7 +27,7 @@ public sealed class StateFilterRowNode : HorizontalListNode
         var labelNode = new LabelTextNode
         {
             Size = new Vector2(LabelWidth, 24),
-            String = $"{label}:",
+            String = Loc.T($"{label}:"),
             TextColor = ColorHelper.GetColor(8),
             AlignmentType = AlignmentType.Right,
         };
@@ -55,9 +55,9 @@ public sealed class StateFilterRowNode : HorizontalListNode
 
     private sealed class StateFilterButton : MultiStateButtonNode<int>
     {
-        private static readonly string[] StateLabels = ["Ignored", "Required", "Excluded"];
+        private static readonly string[] StateLabels = [Loc.T("Ignored"), Loc.T("Required"), Loc.T("Excluded")];
 
         protected override string GetStateText(int state)
-            => state >= 0 && state < StateLabels.Length ?StateLabels[state] : "Unknown";
+            => state >= 0 && state < StateLabels.Length ?StateLabels[state] : Loc.T("Unknown");
     }
 }

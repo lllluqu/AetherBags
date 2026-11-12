@@ -17,7 +17,7 @@ public class ItemListItemWithAddNode : ItemListItemNode
     {
         _addButton = new TextButtonNode
         {
-            String = "Add",
+            String = Loc.T("Add"),
             Size = new Vector2(50, 24),
             OnClick = () =>
             {

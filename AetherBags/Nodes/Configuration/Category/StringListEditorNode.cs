@@ -59,7 +59,7 @@ public sealed class StringListEditorNode : VerticalListNode
         _addInput = new TextInputNode
         {
             Size = new Vector2(200, RowHeight),
-            PlaceholderString = "Add new...",
+            PlaceholderString = Loc.T("Add new..."),
             OnInputComplete = _ => AddCurrentValue(),
         };
         addRow.AddNode(_addInput);
@@ -67,7 +67,7 @@ public sealed class StringListEditorNode : VerticalListNode
         var addButton = new TextButtonNode
         {
             Size = new Vector2(60, RowHeight),
-            String = "Add",
+            String = Loc.T("Add"),
             OnClick = AddCurrentValue,
         };
         addRow.AddNode(addButton);

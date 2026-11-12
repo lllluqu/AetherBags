@@ -68,15 +68,15 @@ public sealed unsafe class DtrService : IDisposable
     {
         var builder = new SeStringBuilder();
         builder.AddUiForeground(EntryTitle, 540);
-        AppendStats(builder, "Main", context.Main);
-        AppendStats(builder, "Saddle", context.Saddle);
-        builder.AddUiForeground("\n\nLeft click: toggle bags\nRight click: toggle saddlebags", 48);
+        AppendStats(builder, Loc.T("Main"), context.Main);
+        AppendStats(builder, Loc.T("Saddle"), context.Saddle);
+        builder.AddUiForeground(Loc.T("\n\nLeft click: toggle bags\nRight click: toggle saddlebags"), 48);
         return builder.Build();
     }
 
     private static void AppendStats(SeStringBuilder builder, string label, InventoryStats stats)
     {
-        builder.AddText($"\n{label}: {stats.UsedSlots:N0}/{stats.TotalSlots:N0} slots ({stats.UsagePercent:N0}%)");
+        builder.AddText(Loc.T("\n{0}: {1:N0}/{2:N0} slots ({3:N0}%)", label, stats.UsedSlots, stats.TotalSlots, stats.UsagePercent));
     }
 
     private static void OnDtrClick(DtrInteractionEvent interaction)

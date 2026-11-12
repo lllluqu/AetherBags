@@ -9,7 +9,7 @@ public static class ChangelogParser
     {
         var path = GetChangelogPath();
         if (!File.Exists(path))
-            return [new ChangelogVersion("Changelog unavailable", ["Unable to find changelog.md."])];
+            return [new ChangelogVersion(Loc.T("Changelog unavailable"), [Loc.T("Unable to find changelog.md.")])];
 
         return Parse(File.ReadAllLines(path));
     }
@@ -36,7 +36,7 @@ public static class ChangelogParser
             if (line.StartsWith('-'))
             {
                 if (currentVersion == null)
-                    currentVersion = "Unreleased";
+                    currentVersion = Loc.T("Unreleased");
 
                 currentItems.Add(line.TrimStart('-').Trim());
             }

@@ -246,7 +246,7 @@ public static class CategoryBucketManager
                     Category = new CategoryInfo
                     {
                         Name = $"[AT] {filterName}",
-                        Description = $"Allagan Tools filter: {filterName}",
+                        Description = Loc.T("Allagan Tools filter: {0}", filterName),
                         Color = ColorHelper.GetColor(32),
                     },
                     Items = new List<ItemInfo>(capacity: 16),
@@ -317,8 +317,8 @@ public static class CategoryBucketManager
                 Key = bucketKey,
                 Category = new CategoryInfo
                 {
-                    Name = "[BiS] Best in Slot",
-                    Description = "Items needed for your BiS gearsets",
+                    Name = Loc.T("[BiS] Best in Slot"),
+                    Description = Loc.T("Items needed for your BiS gearsets"),
                     Color = ColorHelper.GetColor(50),
                 },
                 Items = new List<ItemInfo>(capacity: 16),
@@ -536,7 +536,7 @@ public static class CategoryBucketManager
         string name = uiCat.Name.ToString();
 
         if (string.IsNullOrWhiteSpace(name))
-            name = $"Category {key}";
+            name = Loc.T("Category {0}", key);
 
         return new CategoryInfo
         {
@@ -546,7 +546,7 @@ public static class CategoryBucketManager
 
     private static CategoryInfo CreateMiscCategoryInfo()
     {
-        var info = new CategoryInfo { Name = "Misc", Description = "Uncategorized items" };
+        var info = new CategoryInfo { Name = Loc.T("Misc"), Description = Loc.T("Uncategorized items") };
         ApplyMiscCategoryDisplay(info);
         return info;
     }
@@ -560,8 +560,8 @@ public static class CategoryBucketManager
         }
         else
         {
-            info.Name = "Misc";
-            info.Description = "Uncategorized items";
+            info.Name = Loc.T("Misc");
+            info.Description = Loc.T("Uncategorized items");
         }
     }
 }

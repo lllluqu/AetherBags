@@ -19,7 +19,7 @@ public class TextInputWithButtonNode : SimpleComponentNode {
 
     public TextInputWithButtonNode() {
         _textInputNode = new TextInputNode {
-            PlaceholderString = "Search . . .",
+            PlaceholderString = Loc.T("Search . . ."),
         };
         _textInputNode.AttachNode(this);
 

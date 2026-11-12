@@ -21,7 +21,7 @@ public static class CategoryImportExport
         ImGui.SetClipboardText(compressed);
 
         Services.NotificationManager.AddNotification(
-            new Notification { Content = $"Category '{category.Name}' exported to clipboard.", Type = NotificationType.Success }
+            new Notification { Content = Loc.T("Category '{0}' exported to clipboard.", category.Name), Type = NotificationType.Success }
         );
     }
 
@@ -30,7 +30,7 @@ public static class CategoryImportExport
         if (categories.Count == 0)
         {
             Services.NotificationManager.AddNotification(
-                new Notification { Content = "No categories to export.", Type = NotificationType.Warning }
+                new Notification { Content = Loc.T("No categories to export."), Type = NotificationType.Warning }
             );
             return;
         }
@@ -45,7 +45,7 @@ public static class CategoryImportExport
         ImGui.SetClipboardText(compressed);
 
         Services.NotificationManager.AddNotification(
-            new Notification { Content = $"Exported {categories.Count} categories to clipboard.", Type = NotificationType.Success }
+            new Notification { Content = Loc.T("Exported {0} categories to clipboard.", categories.Count), Type = NotificationType.Success }
         );
     }
 
@@ -59,7 +59,7 @@ public static class CategoryImportExport
         catch
         {
             Services.NotificationManager.AddNotification(
-                new Notification { Content = "Failed to read clipboard.", Type = NotificationType.Error }
+                new Notification { Content = Loc.T("Failed to read clipboard."), Type = NotificationType.Error }
             );
             return null;
         }
@@ -67,7 +67,7 @@ public static class CategoryImportExport
         if (string.IsNullOrWhiteSpace(clipboard))
         {
             Services.NotificationManager.AddNotification(
-                new Notification { Content = "Clipboard is empty.", Type = NotificationType.Warning }
+                new Notification { Content = Loc.T("Clipboard is empty."), Type = NotificationType.Warning }
             );
             return null;
         }
@@ -76,7 +76,7 @@ public static class CategoryImportExport
         if (data?.Categories is not { Count: > 0 })
         {
             Services.NotificationManager.AddNotification(
-                new Notification { Content = "Clipboard data could not be parsed as category data.", Type = NotificationType.Error }
+                new Notification { Content = Loc.T("Clipboard data could not be parsed as category data."), Type = NotificationType.Error }
             );
             return null;
         }
@@ -92,13 +92,13 @@ public static class CategoryImportExport
         if (data.Categories.Count != 1)
         {
             Services.NotificationManager.AddNotification(
-                new Notification { Content = $"Expected 1 category, found {data.Categories.Count}. Use 'Import All' instead.", Type = NotificationType.Warning }
+                new Notification { Content = Loc.T("Expected 1 category, found {0}. Use 'Import All' instead.", data.Categories.Count), Type = NotificationType.Warning }
             );
             return null;
         }
 
         Services.NotificationManager.AddNotification(
-            new Notification { Content = "Category imported from clipboard.", Type = NotificationType.Success }
+            new Notification { Content = Loc.T("Category imported from clipboard."), Type = NotificationType.Success }
         );
 
         return data.Categories[0];
@@ -151,7 +151,7 @@ public static class CategoryImportExport
         Util.SaveConfig(config);
 
         Services.NotificationManager.AddNotification(
-            new Notification { Content = $"Imported {data.Categories.Count} categories from clipboard.", Type = NotificationType.Success }
+            new Notification { Content = Loc.T("Imported {0} categories from clipboard.", data.Categories.Count), Type = NotificationType.Success }
         );
 
         return true;

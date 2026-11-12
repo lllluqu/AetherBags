@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Numerics;
 using System.Runtime.CompilerServices;
@@ -12,7 +12,7 @@ internal static class EnumExtensions {
 
         private string GetDescription() {
             var attribute = enumValue.GetAttribute<DescriptionAttribute>();
-            return attribute?.Description ?? enumValue.ToString();
+            return Loc.T(attribute?.Description ?? enumValue.ToString());
         }
     }
 

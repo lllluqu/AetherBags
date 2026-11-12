@@ -54,7 +54,7 @@ public sealed class CategoryDefinitionConfigurationNode : SimpleComponentNode
             Width = 28,
             Height = 28,
             TexturePath = Path.Combine(Services.PluginInterface.AssemblyLocation.Directory?.FullName!, @"Assets\Icons\download.png"),
-            TextTooltip = "Import Category from Clipboard (Overwrites current)\n(hold shift to confirm)",
+            TextTooltip = Loc.T("Import Category from Clipboard (Overwrites current)\n(hold shift to confirm)"),
             OnClick = HandleImportCategory,
         });
 
@@ -63,7 +63,7 @@ public sealed class CategoryDefinitionConfigurationNode : SimpleComponentNode
             Width = 28,
             Height = 28,
             TexturePath = Path.Combine(Services.PluginInterface.AssemblyLocation.Directory?.FullName!, @"Assets\Icons\upload.png"),
-            TextTooltip = "Export Category to Clipboard",
+            TextTooltip = Loc.T("Export Category to Clipboard"),
             OnClick = HandleExportCategory,
         });
 
@@ -91,19 +91,19 @@ public sealed class CategoryDefinitionConfigurationNode : SimpleComponentNode
         list.ItemSpacing = 4.0f;
 
         _sections.Add(new BasicSettingsSection(() => _categoryDefinition) {
-            String = "Basic Settings", IsCollapsed = false,
+            String = Loc.T("Basic Settings"), IsCollapsed = false,
             OnPropertyChanged = () => { NotifyChanged(); OnCategoryPropertyChanged?.Invoke(); }
         });
 
         _sections.Add(new ItemOrderingSection(() => _categoryDefinition) {
-            String = "Item Ordering",
+            String = Loc.T("Item Ordering"),
             OnLayoutChanged = HandleLayoutChange
         });
 
-        _sections.Add(new RangeFiltersSection(() => _categoryDefinition) { String = "Range Filters" });
-        _sections.Add(new StateFiltersSection(() => _categoryDefinition) { String = "State Filters" });
+        _sections.Add(new RangeFiltersSection(() => _categoryDefinition) { String = Loc.T("Range Filters") });
+        _sections.Add(new StateFiltersSection(() => _categoryDefinition) { String = Loc.T("State Filters") });
         _sections.Add(new ListFiltersSection(() => _categoryDefinition) {
-            String = "List Filters",
+            String = Loc.T("List Filters"),
             OnListChanged = HandleLayoutChange
         });
 
@@ -152,7 +152,7 @@ public sealed class CategoryDefinitionConfigurationNode : SimpleComponentNode
             return;
         }
 
-        _overrideSourceLabel.String = $"⊕ Overrides: {CategoryWrapper.ResolveOverrideSourceName(key)}";
+        _overrideSourceLabel.String = Loc.T("⊕ Overrides: {0}", CategoryWrapper.ResolveOverrideSourceName(key));
         _overrideSourceLabel.IsVisible = true;
     }
 
@@ -196,9 +196,9 @@ public sealed class CategoryDefinitionConfigurationNode : SimpleComponentNode
         InventoryOrchestrator.RefreshAll(updateMaps: true);
     }
 
-    public static string ResolveItemName(uint itemId) => ItemSheet?.GetRow(itemId).Name.ToString() ?? "Unknown";
+    public static string ResolveItemName(uint itemId) => ItemSheet?.GetRow(itemId).Name.ToString() ?? Loc.T("Unknown");
 
-    public static string ResolveUiCategoryName(uint categoryId) => UICategorySheet?.GetRow(categoryId).Name.ToString() ?? "Unknown";
+    public static string ResolveUiCategoryName(uint categoryId) => UICategorySheet?.GetRow(categoryId).Name.ToString() ?? Loc.T("Unknown");
 }
 
 public abstract class ConfigurationSection : CollapsibleSectionNode

@@ -268,7 +268,7 @@ public class AllaganToolsIPC : IDisposable
                     result.TryAdd(itemId, new ExternalCategoryAssignment(
                         CategoryKey: categoryKey,
                         CategoryName: $"[AT] {filterName}",
-                        CategoryDescription: $"Allagan Tools filter: {filterName}",
+                        CategoryDescription: Loc.T("Allagan Tools filter: {0}", filterName),
                         CategoryColor: ColorHelper.GetColor(32),
                         ItemOverlayColor: null,
                         SubPriority: filterIndex

@@ -30,7 +30,7 @@ public sealed class BasicSettingsSection(Func<UserCategoryDefinition> getCategor
         _enabledCheckbox = new CheckboxNode
         {
             Size = new Vector2(Width, 20),
-            String = "Enabled",
+            String = Loc.T("Enabled"),
             OnClick = isChecked =>
             {
                 if (_isRefreshing) return;
@@ -43,7 +43,7 @@ public sealed class BasicSettingsSection(Func<UserCategoryDefinition> getCategor
         _pinnedCheckbox = new CheckboxNode
         {
             Size = new Vector2(Width, 20),
-            String = "Pinned",
+            String = Loc.T("Pinned"),
             OnClick = isChecked =>
             {
                 if (_isRefreshing) return;
@@ -53,11 +53,11 @@ public sealed class BasicSettingsSection(Func<UserCategoryDefinition> getCategor
         };
         AddNode(_pinnedCheckbox);
 
-        AddNode(CreateLabel("Name: "));
+        AddNode(CreateLabel(Loc.T("Name: ")));
         _nameInput = new TextInputNode
         {
             Size = new Vector2(250, 28),
-            PlaceholderString = "Category Name",
+            PlaceholderString = Loc.T("Category Name"),
             OnInputReceived = input =>
             {
                 if (_isRefreshing) return;
@@ -67,11 +67,11 @@ public sealed class BasicSettingsSection(Func<UserCategoryDefinition> getCategor
         };
         AddNode(_nameInput);
 
-        AddNode(CreateLabel("Description:"));
+        AddNode(CreateLabel(Loc.T("Description:")));
         _descriptionInput = new TextInputNode
         {
             Size = new Vector2(250, 28),
-            PlaceholderString = "Optional description",
+            PlaceholderString = Loc.T("Optional description"),
             OnInputReceived = input =>
             {
                 if (_isRefreshing) return;
@@ -83,7 +83,7 @@ public sealed class BasicSettingsSection(Func<UserCategoryDefinition> getCategor
 
         _colorInput = new ColorInputRow
         {
-            Label = "Color",
+            Label = Loc.T("Color"),
             Size = new Vector2(300, 28),
             CurrentColor = new UserCategoryDefinition().Color,
             DefaultColor = new UserCategoryDefinition().Color,
@@ -94,7 +94,7 @@ public sealed class BasicSettingsSection(Func<UserCategoryDefinition> getCategor
         };
         AddNode(_colorInput);
 
-        AddNode(CreateLabel("Priority:"));
+        AddNode(CreateLabel(Loc.T("Priority:")));
         _priorityInput = new NumericInputNode
         {
             Size = new Vector2(120, 28),
@@ -110,7 +110,7 @@ public sealed class BasicSettingsSection(Func<UserCategoryDefinition> getCategor
         };
         AddNode(_priorityInput);
 
-        AddNode(CreateLabel("Order: "));
+        AddNode(CreateLabel(Loc.T("Order: ")));
         _orderInput = new NumericInputNode
         {
             Size = new Vector2(120, 28),
@@ -139,9 +139,9 @@ public sealed class BasicSettingsSection(Func<UserCategoryDefinition> getCategor
             _enabledCheckbox!.IsChecked = CategoryDefinition.Enabled;
             _pinnedCheckbox!.IsChecked = CategoryDefinition.Pinned;
             _nameInput!.String = CategoryDefinition.Name;
-            _nameInput.PlaceholderString = CategoryDefinition.Name.IsNullOrWhitespace() ? "Category Name" : "";
+            _nameInput.PlaceholderString = CategoryDefinition.Name.IsNullOrWhitespace() ? Loc.T("Category Name") : "";
             _descriptionInput!.String = CategoryDefinition.Description;
-            _descriptionInput.PlaceholderString = CategoryDefinition.Description.IsNullOrWhitespace() ? "Optional description" : "";
+            _descriptionInput.PlaceholderString = CategoryDefinition.Description.IsNullOrWhitespace() ? Loc.T("Optional description") : "";
             _colorInput!.CurrentColor = CategoryDefinition.Color;
             _priorityInput!.Value = CategoryDefinition.Priority;
             _orderInput!.Value = CategoryDefinition.Order;

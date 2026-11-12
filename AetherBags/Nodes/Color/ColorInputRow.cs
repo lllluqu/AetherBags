@@ -68,7 +68,7 @@ public class ColorInputRow : HorizontalListNode
 
         _colorPickerAddon = new ColorPickerAddon {
             InternalName = "ColorPicker_AetherBags",
-            Title = "Pick a color",
+            Title = Loc.T("Pick a color"),
         };
     }
 

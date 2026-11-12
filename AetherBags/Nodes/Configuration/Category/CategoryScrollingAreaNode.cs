@@ -1,4 +1,4 @@
-using System.IO;
+﻿using System.IO;
 using System.Numerics;
 using AetherBags.Addons;
 using AetherBags.Helpers.Import;
@@ -33,7 +33,7 @@ public sealed class CategoryScrollingAreaNode : ScrollingListNode
         categoryButtonRow.AddNode(new TextButtonNode
         {
             Size = new Vector2(200, 28),
-            String = "Configure Categories",
+            String = Loc.T("Configure Categories"),
             OnClick = () => _categoryConfigurationAddon?.Toggle(),
         });
 
@@ -42,7 +42,7 @@ public sealed class CategoryScrollingAreaNode : ScrollingListNode
             Width = 28,
             Height = 28,
             TexturePath = Path.Combine(Services.PluginInterface.AssemblyLocation.Directory?.FullName!, @"Assets\Icons\upload.png"),
-            TextTooltip = "Export All Categories to Clipboard",
+            TextTooltip = Loc.T("Export All Categories to Clipboard"),
             OnClick = () => CategoryImportExport.ExportAllCategoriesToClipboard(System.Config.Categories.UserCategories),
         });
 
@@ -51,7 +51,7 @@ public sealed class CategoryScrollingAreaNode : ScrollingListNode
             Width = 28,
             Height = 28,
             TexturePath = Path.Combine(Services.PluginInterface.AssemblyLocation.Directory?.FullName!, @"Assets\Icons\download.png"),
-            TextTooltip = "Import All Categories from Clipboard\n(hold shift to confirm)",
+            TextTooltip = Loc.T("Import All Categories from Clipboard\n(hold shift to confirm)"),
             OnClick = HandleBulkImport,
         });
 
@@ -60,8 +60,8 @@ public sealed class CategoryScrollingAreaNode : ScrollingListNode
             Y = -4,
             Width = 100,
             Height = 28,
-            String = "Reset",
-            TextTooltip = "Resets All Categories\n(hold button to confirm)",
+            String = Loc.T("Reset"),
+            TextTooltip = Loc.T("Resets All Categories\n(hold button to confirm)"),
             TextNode = { TextColor = ColorHelper.GetColor(50) },
         };
 
@@ -99,8 +99,8 @@ public sealed class CategoryScrollingAreaNode : ScrollingListNode
 
         _categoryConfigurationAddon = new AddonCategoryConfigurationWindow {
             Size = new Vector2(700.0f, 500.0f),
-            InternalName = "AetherBags_CategoryConfig",
-            Title = "Category Configuration Window",
+            InternalName = "AetherBagsCN_CategoryConfig",
+            Title = Loc.T("Category Configuration Window"),
         };
     }
 

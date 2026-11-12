@@ -23,7 +23,7 @@ public sealed class ItemOrderingSection(Func<UserCategoryDefinition> getCategory
         if (_initialized) return;
         _initialized = true;
 
-        var sortCriteriaEditor = new ItemSortCriteriaEditorNode("Item Sort Priority:", allowUseGlobal: true, allowCustomOrder: true);
+        var sortCriteriaEditor = new ItemSortCriteriaEditorNode(Loc.T("Item Sort Priority:"), allowUseGlobal: true, allowCustomOrder: true);
         sortCriteriaEditor.OnLayoutChanged = RefreshOrderingLayout;
         sortCriteriaEditor.OnChanged = () =>
         {
@@ -36,7 +36,7 @@ public sealed class ItemOrderingSection(Func<UserCategoryDefinition> getCategory
 
         _customOrderEditor = new UintListEditorNode
         {
-            Label = "Custom Item Order:",
+            Label = Loc.T("Custom Item Order:"),
             MaxValue = Services.DataManager.GetExcelSheet<Item>().LastOrDefault().RowId,
             LabelResolver = CategoryDefinitionConfigurationNode.ResolveItemName,
             OnSearchButtonClicked = OpenItemPicker,
@@ -57,7 +57,7 @@ public sealed class ItemOrderingSection(Func<UserCategoryDefinition> getCategory
     {
         _itemPicker ??= new AddonItemPicker
         {
-            Title = "Select Items to Order",
+            Title = Loc.T("Select Items to Order"),
             InternalName = "Aetherbags_OrderItemPicker",
             SearchOptions = Services.DataManager.GetExcelSheet<Item>()
                 .Where(i => i.RowId > 0 && !i.Name.IsEmpty)

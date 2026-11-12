@@ -1,57 +1,62 @@
+# 1.0.0.6（汉化版）
+- 全面汉化：界面、右键菜单、聊天命令输出、提示与更新日志均已翻译为简体中文。
+- 新增语言设置：默认跟随客户端语言，也可在「常规」里手动切换简体中文 / English。
+- 默认跟随国服客户端显示中文，其他语言客户端仍显示英文。
+
 # 1.0.0.5
-- Added the ability to hide/show game categories in the Category Configuration.
-- Added the ability to hide/show external/built-in categories in the Category Configuration.
-- Fixed a crash that can occur when closing the Changelog window.
-- Fixed a crash that could occur opening the housing menu.
-- Added a submenu in the filter context menu to quickly hide/show key items/crystals.
-- Added utility actions to the filter context menu for refreshing, copying visible items, and printing inventory stats.
-- Added visibility toggles for categories, recently looted items, and category item counts in the filter context menu.
-- Added stacking toggles to swap stack mode and combine unstackable items in the filter context menu.
+- 分类设置中新增显示/隐藏游戏分类的开关。
+- 分类设置中新增显示/隐藏外部来源与内置来源的开关。
+- 修复关闭更新日志窗口时可能发生的崩溃。
+- 修复打开房屋菜单时可能发生的崩溃。
+- 筛选右键菜单新增子菜单，可快速显示/隐藏重要物品与水晶。
+- 筛选右键菜单新增实用操作：刷新、复制可见物品、打印背包统计。
+- 筛选右键菜单新增可见性开关：分类、最近拾取物品、分类物品数量。
+- 筛选右键菜单新增堆叠开关：切换堆叠模式、合并不可堆叠物品。
 
 # 1.0.0.4
-- Unified Category System is now the default system.
-- Added Crystal and Key Item support.
-- Updated the way large quantities are displayed to be more compact and easier to read.
-- Fixed inventory quantities not updating when not moving the full stack.
-- Fixed Collectable items being stacked when they shouldn't.
-- When listing items at your retainer's Market Board, items that can't be sold on the market are greyed out and locked.
-- Fixed a crash when dismissing the last recently-looted item.
-- Fixed a crash when closing the inventory window with the recently-looted strip still visible.
-- Add option to display bag stats in the server info bar.
-- Fix sublabel spacing in item/currency picker.
-- Add changelog window to the configuration window.
+- 统一分类系统成为默认系统。
+- 新增水晶与重要物品支持。
+- 优化大数量显示，更紧凑易读。
+- 修复未移动整组堆叠时数量不更新的问题。
+- 修复收藏品被错误合并堆叠的问题。
+- 在雇员的市场布告板出售物品时，无法上架的物品会变灰并锁定。
+- 修复关闭最后一个「最近拾取」物品时的崩溃。
+- 修复「最近拾取」栏仍显示时关闭背包窗口的崩溃。
+- 新增在服务器信息栏显示背包统计的选项。
+- 修复物品/货币选择器的副标签间距。
+- 在设置窗口中新增「更新日志」窗口。
 
 # 1.0.0.3
-- Add options to IPC to access the AetherBags configuration and make changes.
-- Add configurable keybinds for focusing search and opening bag windows directly into search.
-- Added custom per category multisort options.
-- Added an option to hide the fallback misc category label.
-- Added sorting options for the user, plugin, game and misc category display order.
-- Added options to control the window sizes for the various bag windows.
-- Updated KTK that should make opening the bag feel better.
-- Added a toggle for frame batching for people who prefer the single hitch.
+- IPC 新增读取与修改 AetherBags 设置的接口。
+- 新增可自定义快捷键：聚焦搜索框、打开背包并直接进入搜索。
+- 新增按分类自定义多重排序。
+- 新增隐藏「杂项」分类标签的选项。
+- 新增自定义分类、插件分类、游戏分类与杂项的显示顺序排序。
+- 新增各类背包窗口的尺寸设置。
+- 更新 KTK，打开背包手感更好。
+- 新增分批加载开关，适合更偏好一次性加载的玩家。
 
 # 1.0.0.2
-- Fix ghost hovers for expanded retainer grid too.
-- Now also properly save when closing the configuration window.
-- Added a reset button for the custom categories.
-- Added an option to merge "unstackable" items.
-- Further improved currency editor, also added sorting options.
-- Item/currency search slightly improved.
+- 修复雇员背包展开后的「幽灵悬停」问题。
+- 关闭设置窗口时也会正确保存。
+- 自定义分类新增重置按钮。
+- 新增合并「不可堆叠」物品的选项。
+- 进一步改进货币编辑器，并新增排序选项。
+- 略微改进物品/货币搜索。
 
 # 1.0.0.1
-- Update KTK
-- Added a toggle to enable/disable recently looted items section.
-- Added an option to highlight recently looted items.
-- Improved currency editor.
-- Fix compact lookahead overflow.
-- Fix item rarity not properly mapping to item quality.
-- Fix "ghost hovers" when hovering over items in the retainer inventory with official retainer inventory disabled.
-- Fix Recently Looted Items hover "jumping"
-- Fix Recently Looted Items quantity text color being wrong.
-- The header search bar should now be more centered.
-- Added tooltips to explain compact packing options.
-- Fixed certain errors in the log.
+- 更新 KTK。
+- 新增「最近拾取」区块的启用/禁用开关。
+- 新增高亮最近拾取物品的选项。
+- 改进货币编辑器。
+- 修复紧凑布局的前瞻溢出。
+- 修复物品稀有度未正确对应物品品质的问题。
+- 修复在关闭雇员背包原生界面时，悬停雇员背包物品出现的「幽灵悬停」。
+- 修复「最近拾取」物品悬停时跳动的问题。
+- 修复「最近拾取」物品数量文字颜色错误。
+- 顶部搜索栏更居中。
+- 为紧凑布局选项新增说明提示。
+- 修复日志中的若干错误。
 
 # 1.0.0.0
-- Initial Release
+- 首个版本

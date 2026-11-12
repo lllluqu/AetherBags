@@ -9,7 +9,7 @@ public abstract class ImportExportResetHelper {
     public static void TryImportConfigFromClipboard()
     {
         var clipboard = ImGui.GetClipboardText();
-        var notification = new Notification { Content = "Configuration imported from clipboard.", Type = NotificationType.Success };
+        var notification = new Notification { Content = Loc.T("Configuration imported from clipboard."), Type = NotificationType.Success };
 
         if (!string.IsNullOrWhiteSpace(clipboard))
         {
@@ -18,20 +18,20 @@ public abstract class ImportExportResetHelper {
             {
                 System.Config = imported;
                 Util.SaveConfig(System.Config);
-                Services.Logger.Info("Configuration imported from clipboard.");
+                Services.Logger.Info(Loc.T("Configuration imported from clipboard."));
             }
             else
             {
-                notification.Content = "Clipboard data was invalid or could not be imported.";
+                notification.Content = Loc.T("Clipboard data was invalid or could not be imported.");
                 notification.Type = NotificationType.Error;
-                Services.Logger.Warning("Clipboard data was invalid or could not be imported.");
+                Services.Logger.Warning(Loc.T("Clipboard data was invalid or could not be imported."));
             }
         }
         else
         {
-            notification.Content = "Clipboard is empty or invalid for import.";
+            notification.Content = Loc.T("Clipboard is empty or invalid for import.");
             notification.Type = NotificationType.Warning;
-            Services.Logger.Warning("Clipboard is empty or invalid for import.");
+            Services.Logger.Warning(Loc.T("Clipboard is empty or invalid for import."));
         }
 
         Services.NotificationManager.AddNotification(notification);
@@ -43,9 +43,9 @@ public abstract class ImportExportResetHelper {
         var exportString = Util.SerializeConfig(config);
         ImGui.SetClipboardText(exportString);
         Services.NotificationManager.AddNotification(
-            new Notification { Content = "Configuration exported to clipboard.", Type = NotificationType.Success }
+            new Notification { Content = Loc.T("Configuration exported to clipboard."), Type = NotificationType.Success }
         );
-        Services.Logger.Info("Configuration exported to clipboard.");
+        Services.Logger.Info(Loc.T("Configuration exported to clipboard."));
     }
 
     public static void TryResetConfig()
@@ -54,14 +54,14 @@ public abstract class ImportExportResetHelper {
         Util.SaveConfig(System.Config);
 
         Services.NotificationManager.AddNotification(
-            new Notification { Content = "Configuration reset to default.", Type = NotificationType.Success }
+            new Notification { Content = Loc.T("Configuration reset to default."), Type = NotificationType.Success }
         );
-        Services.Logger.Info("Configuration reset to default.");
+        Services.Logger.Info(Loc.T("Configuration reset to default."));
     }
 
     public static void TryImportSortaKindaFromClipboard(bool replaceExisting)
     {
-        var notification = new Notification { Content = "SortaKinda categories imported.", Type = NotificationType.Success };
+        var notification = new Notification { Content = Loc.T("SortaKinda categories imported."), Type = NotificationType.Success };
 
         if (!SortaKindaImportExport.TryImportFromClipboard(System.Config, replaceExisting, out var error))
         {
@@ -82,9 +82,9 @@ public abstract class ImportExportResetHelper {
     {
         SortaKindaImportExport.ExportToClipboard(System.Config);
         Services.NotificationManager.AddNotification(
-            new Notification { Content = "SortaKinda JSON exported to clipboard.", Type = NotificationType.Success }
+            new Notification { Content = Loc.T("SortaKinda JSON exported to clipboard."), Type = NotificationType.Success }
         );
-        Services.Logger.Info("SortaKinda JSON exported to clipboard.");
+        Services.Logger.Info(Loc.T("SortaKinda JSON exported to clipboard."));
     }
 
     public static void TryExportCategoriesToClipboard()

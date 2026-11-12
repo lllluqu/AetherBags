@@ -14,7 +14,7 @@ public class CommandHandler : IDisposable
 {
     private const string MainCommand = "/aetherbags";
     private const string ShortCommand = "/ab";
-    private const string HelpDescription = "Opens your inventory. Use '/ab help' for more options.";
+    private static readonly string HelpDescription = Loc.T("Opens your inventory. Use '/ab help' for more options.");
     private string? _debugVanillaBypassToken;
 
     public CommandHandler()
@@ -113,7 +113,7 @@ public class CommandHandler : IDisposable
                 break;
 
             default:
-                PrintChat($"Unknown command: {subCommand}. Use '/ab help' for available commands.");
+                PrintChat(Loc.T("Unknown command: {0}. Use '/ab help' for available commands.", subCommand));
                 break;
         }
     }
@@ -122,7 +122,7 @@ public class CommandHandler : IDisposable
     {
         if (System.Config?.General?.DebugEnabled != true)
         {
-            PrintChat("Debug commands are disabled. Enable 'General.DebugEnabled' in your config to use debug commands.");
+            PrintChat(Loc.T("Debug commands are disabled. Enable 'General.DebugEnabled' in your config to use debug commands."));
             return;
         }
 
@@ -134,7 +134,7 @@ public class CommandHandler : IDisposable
         {
             case "":
             case "help":
-                PrintChat("Debug commands:\n  /ab debug saddle                  - Toggle saddlebag window\n  /ab debug retainer                - Toggle retainer window\n  /ab debug changelog               - Toggle changelog window\n  /ab debug test [arg]              - Test IPC source (toggle/on/off/refresh/status)\n  /ab debug batching [arg]          - Frame batching (toggle/on/off/status)\n  /ab debug vanilla-bypass [arg]    - Vanilla inventory bypass (status/acquire/release)\n  /ab debug help                    - Show this message");
+                PrintChat(Loc.T("Debug commands:\n  /ab debug saddle                  - Toggle saddlebag window\n  /ab debug retainer                - Toggle retainer window\n  /ab debug changelog               - Toggle changelog window\n  /ab debug test [arg]              - Test IPC source (toggle/on/off/refresh/status)\n  /ab debug batching [arg]          - Frame batching (toggle/on/off/status)\n  /ab debug vanilla-bypass [arg]    - Vanilla inventory bypass (status/acquire/release)\n  /ab debug help                    - Show this message"));
                 break;
 
             case "saddle":
@@ -164,11 +164,11 @@ public class CommandHandler : IDisposable
 
             case "refresh":
                 InventoryOrchestrator.RefreshAll(updateMaps: true);
-                PrintChat("Inventory refreshed.");
+                PrintChat(Loc.T("Inventory refreshed."));
                 break;
 
             default:
-                PrintChat($"Unknown debug command: {cmd}. Use '/ab debug help' for debug commands.");
+                PrintChat(Loc.T("Unknown debug command: {0}. Use '/ab debug help' for debug commands.", cmd));
                 break;
         }
     }
@@ -178,22 +178,22 @@ public class CommandHandler : IDisposable
         var openWindows = new List<(string Name, IInventoryWindow Window)>();
 
         if (System.AddonInventoryWindow.IsOpen)
-            openWindows.Add(("Main", System.AddonInventoryWindow));
+            openWindows.Add((Loc.T("Main"), System.AddonInventoryWindow));
         if (System.AddonSaddleBagWindow.IsOpen)
-            openWindows.Add(("Saddle", System.AddonSaddleBagWindow));
+            openWindows.Add((Loc.T("Saddle"), System.AddonSaddleBagWindow));
         if (System.AddonRetainerWindow.IsOpen)
-            openWindows.Add(("Retainer", System.AddonRetainerWindow));
+            openWindows.Add((Loc.T("Retainer"), System.AddonRetainerWindow));
 
         if (openWindows.Count == 0)
         {
-            PrintChat("No inventory windows are open. Open an inventory to see stats.");
+            PrintChat(Loc.T("No inventory windows are open. Open an inventory to see stats."));
             return;
         }
 
         foreach (var (name, window) in openWindows)
         {
             var stats = window.GetStats();
-            PrintChat($"[{name}] {stats.UsedSlots}/{stats.TotalSlots} slots ({stats.UsagePercent:F0}%) | {stats.TotalItems} items | {stats.CategoryCount} categories");
+            PrintChat(Loc.T("[{0}] {1}/{2} slots ({3:F0}%) | {4} items | {5} categories", name, stats.UsedSlots, stats.TotalSlots, stats.UsagePercent, stats.TotalItems, stats.CategoryCount));
         }
 
         if (openWindows.Count > 1)
@@ -203,7 +203,7 @@ public class CommandHandler : IDisposable
             {
                 combined += window.GetStats();
             }
-            PrintChat($"[Total] {combined.UsedSlots}/{combined.TotalSlots} slots ({combined.UsagePercent:F0}%) | {combined.TotalItems} items | {combined.CategoryCount} categories");
+            PrintChat(Loc.T("[Total] {0}/{1} slots ({2:F0}%) | {3} items | {4} categories", combined.UsedSlots, combined.TotalSlots, combined.UsagePercent, combined.TotalItems, combined.CategoryCount));
         }
     }
 
@@ -219,7 +219,7 @@ public class CommandHandler : IDisposable
             System.AddonInventoryWindow.SetSearchText(searchTerm);
         }
 
-        PrintChat($"Searching for: {searchTerm}");
+        PrintChat(Loc.T("Searching for: {0}", searchTerm));
     }
 
     private void HandleExport()
@@ -231,14 +231,14 @@ public class CommandHandler : IDisposable
     {
         if (!System.AddonInventoryWindow.IsOpen)
         {
-            PrintChat("Open your inventory first.");
+            PrintChat(Loc.T("Open your inventory first."));
             return;
         }
 
         var categories = System.AddonInventoryWindow.GetVisibleCategories();
         if (categories == null || categories.Count == 0)
         {
-            PrintChat("No items found.");
+            PrintChat(Loc.T("No items found."));
             return;
         }
 
@@ -257,7 +257,7 @@ public class CommandHandler : IDisposable
             }
             var idsString = string.Join(", ", ids);
             ImGui.SetClipboardText(idsString);
-            PrintChat($"Copied {ids.Count} unique item IDs to clipboard.");
+            PrintChat(Loc.T("Copied {0} unique item IDs to clipboard.", ids.Count));
             return;
         }
 
@@ -273,7 +273,7 @@ public class CommandHandler : IDisposable
             }
             var fullText = string.Join("\n", lines);
             ImGui.SetClipboardText(fullText);
-            PrintChat($"Copied {lines.Count} items to clipboard.");
+            PrintChat(Loc.T("Copied {0} items to clipboard.", lines.Count));
             return;
         }
 
@@ -283,7 +283,7 @@ public class CommandHandler : IDisposable
             limit = parsed;
         }
 
-        PrintChat($"Listing up to {limit} items (use '/ab list ids' to copy all IDs):");
+        PrintChat(Loc.T("Listing up to {0} items (use '/ab list ids' to copy all IDs):", limit));
 
         int count = 0;
         foreach (var category in categories)
@@ -297,7 +297,7 @@ public class CommandHandler : IDisposable
             if (count >= limit) break;
         }
 
-        PrintChat($"Shown {count} items. Total categories: {categories.Count}");
+        PrintChat(Loc.T("Shown {0} items. Total categories: {1}", count, categories.Count));
     }
 
     private void HandleBatching(string args)
@@ -323,16 +323,16 @@ public class CommandHandler : IDisposable
                 break;
 
             case "status":
-                PrintChat($"Frame batching is {(config.FrameBatchingEnabled ? "enabled" : "DISABLED")}.");
+                PrintChat(Loc.T("Frame batching is {0}.", config.FrameBatchingEnabled ? Loc.T("enabled") : Loc.T("DISABLED")));
                 return;
 
             default:
-                PrintChat("Usage: /ab debug batching [toggle|on|off|status]\n  on  = batching enabled (default, items spread across frames)\n  off = batching disabled (all items populated in one frame, for profiling)");
+                PrintChat(Loc.T("Usage: /ab debug batching [toggle|on|off|status]\n  on  = batching enabled (default, items spread across frames)\n  off = batching disabled (all items populated in one frame, for profiling)"));
                 return;
         }
 
         Util.SaveConfig(System.Config);
-        PrintChat($"Frame batching is now {(config.FrameBatchingEnabled ? "enabled" : "DISABLED")}. Refreshing inventory…");
+        PrintChat(Loc.T("Frame batching is now {0}. Refreshing inventory…", config.FrameBatchingEnabled ? Loc.T("enabled") : Loc.T("DISABLED")));
         InventoryOrchestrator.RefreshAll(updateMaps: true);
     }
 
@@ -341,7 +341,7 @@ public class CommandHandler : IDisposable
         var api = System.AetherBagsAPI?.API;
         if (api == null)
         {
-            PrintChat("AetherBags API is not available.");
+            PrintChat(Loc.T("AetherBags API is not available."));
             return;
         }
 
@@ -375,7 +375,7 @@ public class CommandHandler : IDisposable
                     break;
                 }
 
-                PrintChat("Usage: /ab debug vanilla-bypass [status|acquire [ms]|release|<ms>]\n  Example: /ab debug vanilla-bypass 30000");
+                PrintChat(Loc.T("Usage: /ab debug vanilla-bypass [status|acquire [ms]|release|<ms>]\n  Example: /ab debug vanilla-bypass 30000"));
                 break;
         }
     }
@@ -385,7 +385,7 @@ public class CommandHandler : IDisposable
         var api = System.AetherBagsAPI?.API;
         if (api == null)
         {
-            PrintChat("AetherBags API is not available.");
+            PrintChat(Loc.T("AetherBags API is not available."));
             return;
         }
 
@@ -393,19 +393,19 @@ public class CommandHandler : IDisposable
             api.ReleaseVanillaInventoryBypass(_debugVanillaBypassToken);
 
         _debugVanillaBypassToken = api.AcquireVanillaInventoryBypass("AetherBags Debug Command", timeoutMs);
-        PrintChat($"Vanilla inventory bypass acquired for {timeoutMs}ms. Token: {_debugVanillaBypassToken}");
+        PrintChat(Loc.T("Vanilla inventory bypass acquired for {0}ms. Token: {1}", timeoutMs, _debugVanillaBypassToken));
     }
 
     private void ReleaseDebugVanillaBypass()
     {
         if (string.IsNullOrWhiteSpace(_debugVanillaBypassToken))
         {
-            PrintChat("No debug vanilla inventory bypass token is active in this session.");
+            PrintChat(Loc.T("No debug vanilla inventory bypass token is active in this session."));
             return;
         }
 
         bool released = System.AetherBagsAPI?.API.ReleaseVanillaInventoryBypass(_debugVanillaBypassToken) ?? false;
-        PrintChat(released ? "Debug vanilla inventory bypass released." : "Debug vanilla inventory bypass token was already expired or released.");
+        PrintChat(released ? Loc.T("Debug vanilla inventory bypass released.") : Loc.T("Debug vanilla inventory bypass token was already expired or released."));
         _debugVanillaBypassToken = null;
     }
 
@@ -419,7 +419,7 @@ public class CommandHandler : IDisposable
         var testSource = System.IPC?.TestSource;
         if (testSource == null)
         {
-            PrintChat("Test source not available.");
+            PrintChat(Loc.T("Test source not available."));
             return;
         }
 
@@ -432,12 +432,12 @@ public class CommandHandler : IDisposable
                 if (testSource.IsReady)
                 {
                     testSource.Disable();
-                    PrintChat("Test source disabled.");
+                    PrintChat(Loc.T("Test source disabled."));
                 }
                 else
                 {
                     testSource.Enable();
-                    PrintChat("Test source enabled. Search 'test' to find items.");
+                    PrintChat(Loc.T("Test source enabled. Search 'test' to find items."));
                 }
                 InventoryOrchestrator.RefreshAll(updateMaps: true);
                 break;
@@ -445,29 +445,29 @@ public class CommandHandler : IDisposable
             case "on":
             case "enable":
                 testSource.Enable();
-                PrintChat("Test source enabled. Search 'test' to find items.");
+                PrintChat(Loc.T("Test source enabled. Search 'test' to find items."));
                 InventoryOrchestrator.RefreshAll(updateMaps: true);
                 break;
 
             case "off":
             case "disable":
                 testSource.Disable();
-                PrintChat("Test source disabled.");
+                PrintChat(Loc.T("Test source disabled."));
                 InventoryOrchestrator.RefreshAll(updateMaps: true);
                 break;
 
             case "refresh":
                 testSource.Refresh();
-                PrintChat("Test source refreshed.");
+                PrintChat(Loc.T("Test source refreshed."));
                 InventoryOrchestrator.RefreshAll(updateMaps: true);
                 break;
 
             case "status":
-                PrintChat($"Test source is {(testSource.IsReady ? "enabled" : "disabled")}.");
+                PrintChat(Loc.T("Test source is {0}.", testSource.IsReady ? Loc.T("enabled") : Loc.T("disabled")));
                 break;
 
             default:
-                PrintChat("Usage: /ab test [toggle|on|off|refresh|status]");
+                PrintChat(Loc.T("Usage: /ab test [toggle|on|off|refresh|status]"));
                 break;
         }
     }
@@ -476,38 +476,38 @@ public class CommandHandler : IDisposable
     {
         var commands = new (string Command, string Description)[]
         {
-            ("/ab", "Toggle inventory window"),
-            ("/ab config", "Open configuration window"),
-            ("/ab show", "Open inventory window"),
-            ("/ab hide", "Close inventory window"),
+            ("/ab", Loc.T("Toggle inventory window")),
+            ("/ab config", Loc.T("Open configuration window")),
+            ("/ab show", Loc.T("Open inventory window")),
+            ("/ab hide", Loc.T("Close inventory window")),
 
-            ("/ab search <term>", "Open inventory and search for items"),
+            ("/ab search <term>", Loc.T("Open inventory and search for items")),
 
-            ("/ab list", "List items currently visible in inventory"),
-            ("/ab list <n>", "List first N items"),
-            ("/ab list ids", "Copy unique item IDs to clipboard"),
-            ("/ab list full", "Copy full item list to clipboard"),
+            ("/ab list", Loc.T("List items currently visible in inventory")),
+            ("/ab list <n>", Loc.T("List first N items")),
+            ("/ab list ids", Loc.T("Copy unique item IDs to clipboard")),
+            ("/ab list full", Loc.T("Copy full item list to clipboard")),
 
-            ("/ab stats", "Show inventory statistics"),
+            ("/ab stats", Loc.T("Show inventory statistics")),
 
-            ("/ab import", "Import config from clipboard (hold Shift)"),
-            ("/ab import-sk", "Import SortaKinda clipboard config"),
-            ("/ab export", "Export config to clipboard"),
-            ("/ab export-categories", "Export all categories to clipboard"),
-            ("/ab import-categories", "Import categories from clipboard (replaces existing)"),
-            ("/ab reset", "Reset config to default"),
+            ("/ab import", Loc.T("Import config from clipboard (hold Shift)")),
+            ("/ab import-sk", Loc.T("Import SortaKinda clipboard config")),
+            ("/ab export", Loc.T("Export config to clipboard")),
+            ("/ab export-categories", Loc.T("Export all categories to clipboard")),
+            ("/ab import-categories", Loc.T("Import categories from clipboard (replaces existing)")),
+            ("/ab reset", Loc.T("Reset config to default")),
 
-            ("/ab help", "Show this help message"),
+            ("/ab help", Loc.T("Show this help message")),
         };
 
-        var lines = new List<string> { "AetherBags Commands:" };
+        var lines = new List<string> { Loc.T("AetherBags Commands:") };
 
         foreach (var (cmd, desc) in commands)
             lines.Add($"  {cmd}  - {desc}");
 
         lines.Add(System.Config?.General?.DebugEnabled == true
-            ? "  /ab debug [saddle|retainer|test|refresh]  - Debug commands"
-            : "  /ab debug  - Debug-only commands (enable in config)");
+            ? Loc.T("  /ab debug [saddle|retainer|test|refresh]  - Debug commands")
+            : Loc.T("  /ab debug  - Debug-only commands (enable in config)"));
 
         PrintChat(string.Join("\n", lines));
     }

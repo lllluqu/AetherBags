@@ -42,7 +42,7 @@ public sealed class CategoryGeneralSettingsEditorNode : SimpleComponentNode
             TextColor = ColorHelper.GetColor(50),
             TextOutlineColor = ColorHelper.GetColor(7),
             TextFlags = TextFlags.Edge,
-            String = "General Settings",
+            String = Loc.T("General Settings"),
         };
         list.AddNode(_headerLabel);
 
@@ -51,7 +51,7 @@ public sealed class CategoryGeneralSettingsEditorNode : SimpleComponentNode
         _showBuiltInCheckbox = new CheckboxNode
         {
             Size = new Vector2(300, 20),
-            String = "Show built-in sources",
+            String = Loc.T("Show built-in sources"),
             OnClick = isChecked =>
             {
                 if (_isRefreshing) return;
@@ -65,7 +65,7 @@ public sealed class CategoryGeneralSettingsEditorNode : SimpleComponentNode
         _showExternalCheckbox = new CheckboxNode
         {
             Size = new Vector2(300, 20),
-            String = "Show external sources",
+            String = Loc.T("Show external sources"),
             OnClick = isChecked =>
             {
                 if (_isRefreshing) return;
@@ -79,7 +79,7 @@ public sealed class CategoryGeneralSettingsEditorNode : SimpleComponentNode
         _showGameCheckbox = new CheckboxNode
         {
             Size = new Vector2(300, 20),
-            String = "Show game categories",
+            String = Loc.T("Show game categories"),
             OnClick = isChecked =>
             {
                 if (_isRefreshing) return;

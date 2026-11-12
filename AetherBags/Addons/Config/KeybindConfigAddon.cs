@@ -68,7 +68,7 @@ public class KeybindConfigAddon : NativeAddon
             Height = 18,
             AlignmentType = AlignmentType.Left,
             Position = ContentStartPosition,
-            String = "Press desired key combination:",
+            String = Loc.T("Press desired key combination:"),
         };
         _inputComboLabelNode.AttachNode(this);
 
@@ -99,7 +99,7 @@ public class KeybindConfigAddon : NativeAddon
                 Height = 18,
                 AlignmentType = AlignmentType.Left,
                 Position = ContentStartPosition + new Vector2(0.0f, 84.0f),
-                String = "Game Keybind Conflicts:",
+                String = Loc.T("Game Keybind Conflicts:"),
             };
             _conflictsLabelNode.AttachNode(this);
 
@@ -131,7 +131,7 @@ public class KeybindConfigAddon : NativeAddon
         {
             Position = ContentStartPosition + new Vector2(0.0f, ContentSize.Y - ButtonHeight),
             Size = new Vector2(ButtonWidth, ButtonHeight),
-            String = "Confirm",
+            String = Loc.T("Confirm"),
             OnClick = ConfirmKeybind,
         };
         _confirmButtonNode.AttachNode(this);
@@ -140,7 +140,7 @@ public class KeybindConfigAddon : NativeAddon
         {
             Position = ContentStartPosition + new Vector2(ContentSize.X - ButtonWidth, ContentSize.Y - ButtonHeight),
             Size = new Vector2(ButtonWidth, ButtonHeight),
-            String = "Cancel",
+            String = Loc.T("Cancel"),
             OnClick = Close,
         };
         _cancelButtonNode.AttachNode(this);
@@ -183,7 +183,7 @@ public class KeybindConfigAddon : NativeAddon
     private string GetComboString()
     {
         return _combo.Count == 0
-            ? "None"
+            ? Loc.T("None")
             : string.Join(" + ", _combo.OrderByModifier().Select(key => key.GetDisplayName()));
     }
 
@@ -199,7 +199,7 @@ public class KeybindConfigAddon : NativeAddon
             _conflictsScrollingAreaNode.AddNode(new TextNode
             {
                 Height = 18,
-                String = "No conflicts found.",
+                String = Loc.T("No conflicts found."),
                 TextColor = ColorHelper.GetColor(3),
             });
         }

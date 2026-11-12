@@ -38,7 +38,7 @@ public class LootedItemsCategoryNode : InventoryCategoryNodeBase
     private bool _headerExpanded;
     private bool _collapsePending;
     private float _baseHeaderWidth = 96f;
-    private string _fullHeaderText = "Recently Looted";
+    private string _fullHeaderText = Loc.T("Recently Looted");
     private bool _isDisposed;
 
     public event Action<LootedItemsCategoryNode, bool>? HeaderHoverChanged;
@@ -72,7 +72,7 @@ public class LootedItemsCategoryNode : InventoryCategoryNodeBase
             Position = Vector2.Zero,
             Size = new Vector2(96, HeaderHeight),
             AlignmentType = AlignmentType.Left,
-            String = "Recently Looted",
+            String = Loc.T("Recently Looted"),
             TextFlags = TextFlags.OverflowHidden | TextFlags.Ellipsis,
             TextColor = ColorHelper.GetColor(26), // Gold-ish color
         };
@@ -158,8 +158,8 @@ public class LootedItemsCategoryNode : InventoryCategoryNodeBase
     private void UpdateHeaderText()
     {
         _fullHeaderText = _lootedItems.Count > 0
-            ? $"Recently Looted ({_lootedItems.Count})"
-            : "Recently Looted";
+            ? Loc.T("Recently Looted ({0})", _lootedItems.Count)
+            : Loc.T("Recently Looted");
 
         if (_isDisposed) return;
         _headerTextNode.String = _fullHeaderText;

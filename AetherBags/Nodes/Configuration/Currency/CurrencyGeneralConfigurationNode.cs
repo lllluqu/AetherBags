@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using System.Numerics;
 using AetherBags.Addons;
@@ -27,7 +27,7 @@ public sealed class CurrencyGeneralConfigurationNode : TabbedVerticalListNode
         LabelTextNode titleNode = new LabelTextNode
         {
             Size = new Vector2(Width, 18),
-            String = "Currency Configuration",
+            String = Loc.T("Currency Configuration"),
             TextColor = ColorHelper.GetColor(2),
             TextOutlineColor = ColorHelper.GetColor(0),
         };
@@ -39,7 +39,7 @@ public sealed class CurrencyGeneralConfigurationNode : TabbedVerticalListNode
         {
             Size = new Vector2(Width, 18),
             IsVisible = true,
-            String = "Show Currency",
+            String = Loc.T("Show Currency"),
             IsChecked = config.Enabled,
             OnClick = isChecked =>
             {
@@ -54,7 +54,7 @@ public sealed class CurrencyGeneralConfigurationNode : TabbedVerticalListNode
         var defaultColorHandler = CreateColorHandler(color => config.DefaultColor = color);
         ColorInputRow defaultCurrencyColorNode = new ColorInputRow
         {
-            Label = "Default Currency Color",
+            Label = Loc.T("Default Currency Color"),
             Size = new Vector2(300, 24),
             CurrentColor = config.DefaultColor,
             DefaultColor = new CurrencySettings().DefaultColor,
@@ -69,9 +69,9 @@ public sealed class CurrencyGeneralConfigurationNode : TabbedVerticalListNode
         {
             Size = new Vector2(Width, 18),
             IsVisible = true,
-            String = "Color Weekly Cap",
+            String = Loc.T("Color Weekly Cap"),
             IsChecked = config.ColorWhenCapped,
-            TextTooltip = "Changes the color of the currency display when you have reached the maximum amount earnable for the current week (e.g., 450/450).",
+            TextTooltip = Loc.T("Changes the color of the currency display when you have reached the maximum amount earnable for the current week (e.g., 450/450)."),
             OnClick = isChecked =>
             {
                 config.ColorWhenCapped = isChecked;
@@ -85,7 +85,7 @@ public sealed class CurrencyGeneralConfigurationNode : TabbedVerticalListNode
         var cappedColorHandler = CreateColorHandler(color => config.CappedColor = color);
         ColorInputRow cappedCurrencyColorNode = new ColorInputRow
         {
-            Label = "Weekly Cap Color",
+            Label = Loc.T("Weekly Cap Color"),
             Size = new Vector2(300, 24),
             CurrentColor = config.CappedColor,
             DefaultColor = new CurrencySettings().CappedColor,
@@ -102,9 +102,9 @@ public sealed class CurrencyGeneralConfigurationNode : TabbedVerticalListNode
         {
             Size = new Vector2(Width, 18),
             IsVisible = true,
-            String = "Color Max Capacity",
+            String = Loc.T("Color Max Capacity"),
             IsChecked = config.ColorWhenLimited,
-            TextTooltip = "Changes the color of the currency display when your total held amount has reached its maximum capacity (e.g., 2000/2000).",
+            TextTooltip = Loc.T("Changes the color of the currency display when your total held amount has reached its maximum capacity (e.g., 2000/2000)."),
             OnClick = isChecked =>
             {
                 config.ColorWhenLimited = isChecked;
@@ -118,7 +118,7 @@ public sealed class CurrencyGeneralConfigurationNode : TabbedVerticalListNode
         var limitColorHandler = CreateColorHandler(color => config.LimitColor = color);
         ColorInputRow limitCurrencyColorNode = new ColorInputRow
         {
-            Label = "Max Capacity Color",
+            Label = Loc.T("Max Capacity Color"),
             Size = new Vector2(300, 24),
             CurrentColor = config.LimitColor,
             DefaultColor = new CurrencySettings().LimitColor,
@@ -137,15 +137,15 @@ public sealed class CurrencyGeneralConfigurationNode : TabbedVerticalListNode
 
         _currencyListEditor = new UintListEditorNode
         {
-            Label = "Displayed Currencies:",
+            Label = Loc.T("Displayed Currencies:"),
             LabelWidth = 360f,
             MaxValue = Services.DataManager.GetExcelSheet<Item>()?.LastOrDefault().RowId ?? uint.MaxValue,
             LabelResolver = id =>
             {
                 return id switch
                 {
-                    CurrencySettings.LimitedTomestoneId => "Current Limited Tomestone",
-                    CurrencySettings.NonLimitedTomestoneId => "Current Non-Limited Tomestone",
+                    CurrencySettings.LimitedTomestoneId => Loc.T("Current Limited Tomestone"),
+                    CurrencySettings.NonLimitedTomestoneId => Loc.T("Current Non-Limited Tomestone"),
                     _ => Services.DataManager.GetExcelSheet<Item>().GetRow(id).Name.ToString()
                 };
             },
@@ -165,17 +165,17 @@ public sealed class CurrencyGeneralConfigurationNode : TabbedVerticalListNode
         var quickAddRow = new HorizontalListNode { Size = new Vector2(600, 30), ItemSpacing = 8.0f };
 
         quickAddRow.AddNode(new TextButtonNode {
-            String = "+ Gil", Size = new Vector2(70, 24),
+            String = Loc.T("+ Gil"), Size = new Vector2(70, 24),
             OnClick = () => AddCurrencyToList(1)
         });
 
         quickAddRow.AddNode(new TextButtonNode {
-            String = "+ Limited Tomestone", Size = new Vector2(150, 24),
+            String = Loc.T("+ Limited Tomestone"), Size = new Vector2(150, 24),
             OnClick = () => AddCurrencyToList(CurrencySettings.LimitedTomestoneId)
         });
 
         quickAddRow.AddNode(new TextButtonNode {
-            String = "+ Non-Limited", Size = new Vector2(110, 24),
+            String = Loc.T("+ Non-Limited"), Size = new Vector2(110, 24),
             OnClick = () => AddCurrencyToList(CurrencySettings.NonLimitedTomestoneId)
         });
         AddNode(quickAddRow);
@@ -204,8 +204,8 @@ public sealed class CurrencyGeneralConfigurationNode : TabbedVerticalListNode
     private void OpenCurrencyPicker() {
         var picker = new AddonCurrencyPicker
         {
-            Title = "Select Currency to Add",
-            InternalName = "AetherBags_CurrencyPicker",
+            Title = Loc.T("Select Currency to Add"),
+            InternalName = "AetherBagsCN_CurrencyPicker",
         };
         picker.SelectionResult = item =>
         {

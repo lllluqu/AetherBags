@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
@@ -31,7 +31,7 @@ public static class SortaKindaImportExport
         }
         catch (Exception ex)
         {
-            error = $"Failed to read clipboard: {ex.Message}";
+            error = Loc.T("Failed to read clipboard: {0}", ex.Message);
             return false;
         }
 
@@ -48,7 +48,7 @@ public static class SortaKindaImportExport
 
         if (string.IsNullOrWhiteSpace(input))
         {
-            error = "Input was empty.";
+            error = Loc.T("Input was empty.");
             return false;
         }
 
@@ -68,7 +68,7 @@ public static class SortaKindaImportExport
 
         if (external is null)
         {
-            error = "Failed to parse SortaKinda input.";
+            error = Loc.T("Failed to parse SortaKinda input.");
             return false;
         }
 
